@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDataBase {
-	List<User> users;
+	private static UserDataBase instance;
+	private List<User> users;
 	
 	private UserDataBase() {
 		users = new ArrayList<>();
@@ -13,12 +14,26 @@ public class UserDataBase {
 	}
 	
 	private void Populate() {
-		
+		//read the csv file and populate the database
 	}
 	
-	public boolean CreateUser() {
-		//if anything is null simply return false
-		return true;
+	public static UserDataBase getInstance() {
+		if(instance == null) {
+			synchronized(UserDataBase.class) {
+				if(instance == null) {
+					instance = new UserDataBase();
+				}
+			}
+		}
+		return instance;
 	}
-	//
+	
+	public boolean Login(String username, String password) {
+		for (User user : users) {
+			if(user.CorrectLogin(username, password)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

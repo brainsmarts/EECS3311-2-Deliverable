@@ -1,0 +1,9 @@
+package group7891234.deliverable2.users;
+
+public class UserFactory {
+	
+	public static User getUser(String username, String password, String email) {
+		return new User();
+		
+	}
+}

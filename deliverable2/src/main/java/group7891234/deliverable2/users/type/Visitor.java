@@ -1,5 +1,12 @@
 package group7891234.deliverable2.users.type;
 
-public class Visitor {
+import group7891234.deliverable2.users.User;
+
+public class Visitor extends User{
+
+	public Visitor(String username, String password, String email) {
+		super(username, password, email);
+		// TODO Auto-generated constructor stub
+	}
 
 }

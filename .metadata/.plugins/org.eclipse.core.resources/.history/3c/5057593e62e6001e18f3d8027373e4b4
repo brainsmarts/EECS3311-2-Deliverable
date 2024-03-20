@@ -1,0 +1,11 @@
+package group7891234.deliverable2.users.factory;
+
+public class UserBuilder {
+	UserBuilder(){
+		
+	}
+	
+	public UserBuilder setUserName(String username) {
+		this.username = username;
+	}
+}

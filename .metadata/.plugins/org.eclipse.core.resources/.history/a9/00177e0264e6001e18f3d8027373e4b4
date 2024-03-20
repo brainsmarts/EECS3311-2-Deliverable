@@ -1,0 +1,27 @@
+package group7891234.deliverable2.users;
+
+import group7891234.deliverable2.users.type.Manager;
+import group7891234.deliverable2.users.type.UserType;
+
+public class UserFactory {
+	
+	public static User getUser(String username, String password, String email, UserType type) {
+		switch(type) {
+			case FACULTY: 
+				return new Faculty();
+				break;
+			case NON_FACULTY:
+				break;
+			case MANAGER:
+				break;
+			case STUDENT:
+				break;
+			case VISITOR:
+				break;
+			default:
+				
+		}
+		return new Manager();
+		
+	}
+}

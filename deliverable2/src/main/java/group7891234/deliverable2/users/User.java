@@ -17,9 +17,19 @@ public abstract class User {
 	Map<Date, List<Item>> itemsBorrowed;
 	List<NewsLetters> subscribed = null;
 	int lostBookCount;
+	protected User(String username, String password, String email){
+		
+	}
 	
-	public boolean correctLogin(String username, String password) {
+	protected boolean CorrectLogin(String username, String password) {
 		return (username.compareTo(this.username) == 0 && password.compareTo(this.password) == 0);
 	}
 	
+	public void Subscribe(NewsLetters newsletter) {
+		subscribed.add(newsletter);
+	}
+	
+	public void UnSubscribe(NewsLetters newsletter) {
+		subscribed.remove(newsletter);
+	}
 }
