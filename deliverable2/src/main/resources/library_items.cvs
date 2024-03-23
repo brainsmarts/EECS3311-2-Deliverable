@@ -1,0 +1,7 @@
+type,id,name,price,enabled,publisher,content
+TEXTBOOK,cheese#2,The Great Cheese Man 2nd edition,0,true,TheRatCompany,cheese cheese cheese cheese hadhashkfhasdkjfkjasdfadjsfahdfhakdhfjka
+TEXTBOOK,cheese#4,The Great Cheese Man 4th edition,0,true,TheRatCompany,chaase chaase chaaase chaase hadhashkfhasdkjfkjasdfadjsfahdfhakdhfjkddda
+TEXTBOOK,rateconomy#5,Economics For Critters 5th edition,0,false,TheRatCompany,so u know how like cause like its alot of alot of cheese that we can trade for gold
+TEXTBOOK,rateconomy#6,Economics For Critters 6th edition,0,true,TheRatCompany,so u know how like but ALOT more cheese unlike last year just a bit of gold and we become the cheese demons
+NEWSLETTER,times,NYTimes,0,true,NYTimes,https://www.nytimes.com/ca/
+BOOK,chseadv,The Adventure of Swiss and Holes,2,true,TheRatCompany,Once upon a time, the great cheese man came to us....

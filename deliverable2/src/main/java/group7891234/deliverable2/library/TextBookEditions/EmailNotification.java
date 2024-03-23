@@ -1,5 +1,17 @@
 package group7891234.deliverable2.library.TextBookEditions;
 
-public class EmailNotification {
+import group7891234.deliverable2.users.User;
 
+public class EmailNotification implements TextBookNotification{
+	User user;
+	
+	public EmailNotification(User user) {
+		this.user = user;
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+	}
+	
 }
