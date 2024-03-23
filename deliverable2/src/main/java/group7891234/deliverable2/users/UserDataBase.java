@@ -73,6 +73,15 @@ public class UserDataBase {
 	  return user;
 	}
 	
+	public User getUser(String username) {
+		for(User user: users) {
+			if(user.getUserName().compareTo(username) == 0) {
+				return user;
+			}
+		}
+		throw new IllegalArgumentException("User Not Found");
+	}
+	
 	private Set<String> parseStringData(String data){
 		if(data.isEmpty()) {
 			return Collections.emptySet();
@@ -106,7 +115,7 @@ public class UserDataBase {
 	}
 	
 	public void addUserToCSV(String username, String password, String email, UserType type) {
-		CsvWriter writer = new CsvWriter(path);
+		CsvWriter writer = getFileWriter();
 		try {
 			writer.write(username);
 			writer.write(password);
@@ -126,13 +135,43 @@ public class UserDataBase {
 		writer.close();
 	}
 	
-	public void getFile() {
+	public CsvWriter getFileWriter() {
+		CsvWriter writer = new CsvWriter(path);
 		  try {
 			  CsvReader reader = new CsvReader(path);
+			  List<String[]> lines = new ArrayList<>();
+			  String[] line;
+			  
+			  while(reader.readRecord()) {
+				  lines.add(reader.getValues());
+				  System.out.println(lines);
+			  }
+			  for(String[] string : lines) {
+				  writer.writeRecord(string);
+			  }
 			  
 		  }catch(Exception e) {
 			  
 		  }
+		 
+		  return writer;
+	}
+	
+	public List<String[]> getFileContent() {
+
+		List<String[]> lines = new ArrayList<>();
+		  try {
+			  CsvReader reader = new CsvReader(path);
+			  String[] line;
+			  
+			  while(reader.readRecord()) {
+				  lines.add(reader.getValues());
+			  }
+			  
+		  }catch(Exception e) {
+			  
+		  }
+		  return lines;
 	}
 	
 	public static UserDataBase getInstance() {

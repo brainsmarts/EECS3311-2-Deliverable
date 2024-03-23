@@ -19,11 +19,39 @@ public abstract class User {
 	private String username;
 	private String password;
 	private String email;
-	private List<Book> borrowing;
+	
+	public String getUserName() {
+		return username;
+	}
+	
+	public Map<LocalDate, Set<String>> getBooksBorrowed() {
+		return booksBorrowed;
+	}
+	
+	public List<String> getBooksBorrowedList(){
+        List<String> allStrings = new ArrayList<>();
+        for (Set<String> strings : booksBorrowed.values()) {
+            allStrings.addAll(strings);
+        }
+        return allStrings;
+	}
+
+	public Map<LocalDate, Set<String>> getItemsRented() {
+		return itemsRented;
+	}
+
+	public List<String> getSubscribed() {
+		return subscribed;
+	}
+
+	public int getLostBookCount() {
+		return lostBookCount;
+	}
+
 	private Map<LocalDate, Set<String>> booksBorrowed;
 	private Map<LocalDate, Set<String>> itemsRented;
 	private List<String> subscribed;
-	private int lostBookCount;
+	private int lostBookCount = 0;
 	
 	protected User(String username, String password, String email){
 		this.username = username; 

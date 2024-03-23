@@ -833,3 +833,147 @@
 2024-03-23 06:31:35,313 [Worker-81: Launching AppTest] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
 2024-03-23 06:31:35,316 [Worker-81: Launching AppTest] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2024-03-23 06:31:35,317 [Worker-81: Launching AppTest] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 06:49:19,336 [Worker-71: Launching AppTest] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 06:49:19,337 [Worker-71: Launching AppTest] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2024-03-23 06:49:19,340 [Worker-71: Launching AppTest] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 06:49:19,341 [Worker-71: Launching AppTest] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 06:56:39,313 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 06:56:39,314 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2024-03-23 06:56:39,317 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 06:56:39,317 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 07:11:03,043 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:11:03,044 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 07:11:03,076 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:11:03,076 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 07:13:59,008 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:13:59,009 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 07:13:59,011 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:13:59,011 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 07:34:04,031 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:34:04,032 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 07:34:04,034 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:34:04,034 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 07:36:00,463 [Worker-95: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:36:00,463 [Worker-95: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 07:36:00,466 [Worker-95: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:36:00,466 [Worker-95: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 07:36:38,425 [Worker-99: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:36:38,426 [Worker-99: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 07:36:38,427 [Worker-99: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:36:38,428 [Worker-99: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 07:42:58,851 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:42:58,852 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 07:42:58,853 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:42:58,853 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 07:43:49,336 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:43:49,337 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 07:43:49,339 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:43:49,339 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 07:44:47,641 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:44:47,641 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 07:44:47,644 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:44:47,644 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 07:46:27,273 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:46:27,273 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 07:46:27,275 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:46:27,275 [Worker-94: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 07:46:59,938 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:46:59,938 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 07:46:59,940 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:46:59,940 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 07:51:05,896 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:51:05,896 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 07:51:05,898 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 07:51:05,898 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 08:11:11,456 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:11:11,457 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 08:11:11,459 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:11:11,459 [Worker-96: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 08:12:04,530 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:12:04,530 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 08:12:04,532 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:12:04,532 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 08:13:21,044 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:13:21,045 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 08:13:21,046 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:13:21,047 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 08:15:33,597 [Worker-95: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:15:33,598 [Worker-95: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 08:15:33,600 [Worker-95: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:15:33,601 [Worker-95: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 08:16:58,244 [Worker-77: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:16:58,245 [Worker-77: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 08:16:58,246 [Worker-77: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:16:58,247 [Worker-77: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 08:20:08,369 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:20:08,370 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 08:20:08,373 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:20:08,373 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 08:20:26,581 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:20:26,581 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 08:20:26,583 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:20:26,583 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 08:21:29,110 [Worker-99: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:21:29,110 [Worker-99: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 08:21:29,113 [Worker-99: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:21:29,113 [Worker-99: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 08:21:56,170 [Worker-77: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:21:56,170 [Worker-77: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 08:21:56,172 [Worker-77: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:21:56,172 [Worker-77: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 08:22:30,584 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:22:30,584 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 08:22:30,586 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:22:30,586 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 08:24:30,259 [Worker-99: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:24:30,260 [Worker-99: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 08:24:30,262 [Worker-99: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:24:30,262 [Worker-99: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 08:31:16,850 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:31:16,850 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 08:31:16,852 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:31:16,852 [Worker-98: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 08:31:58,764 [Worker-105: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:31:58,764 [Worker-105: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 08:31:58,766 [Worker-105: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:31:58,766 [Worker-105: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 08:36:44,859 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:36:44,859 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 08:36:44,862 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 08:36:44,862 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 09:01:28,107 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 09:01:28,107 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 09:01:28,109 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 09:01:28,110 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 09:01:47,303 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 09:01:47,304 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 09:01:47,306 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 09:01:47,306 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 09:38:55,271 [Worker-106: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 09:38:55,272 [Worker-106: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 09:38:55,276 [Worker-106: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 09:38:55,276 [Worker-106: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 09:57:44,063 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 09:57:44,063 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 09:57:44,065 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 09:57:44,065 [Worker-97: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 09:59:20,293 [Worker-111: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 09:59:20,293 [Worker-111: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 09:59:20,295 [Worker-111: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 09:59:20,295 [Worker-111: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 10:01:51,795 [Worker-110: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 10:01:51,796 [Worker-110: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 10:01:51,797 [Worker-110: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 10:01:51,797 [Worker-110: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 10:03:46,740 [Worker-113: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 10:03:46,740 [Worker-113: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 10:03:46,741 [Worker-113: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 10:03:46,742 [Worker-113: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 10:09:37,788 [Worker-113: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 10:09:37,789 [Worker-113: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 10:09:37,791 [Worker-113: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 10:09:37,791 [Worker-113: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2024-03-23 10:11:48,408 [Worker-112: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 10:11:48,409 [Worker-112: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2024-03-23 10:11:48,410 [Worker-112: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-03-23 10:11:48,410 [Worker-112: Launching MainUI] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource

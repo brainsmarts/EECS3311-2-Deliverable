@@ -20,5 +20,16 @@ public class Search {
 		this.strategy = strategy;
 	}
 	
+	public static int compareSimilarity(String str1, String str2) {
+        int similarity = 0;
+        int minLength = Math.min(str1.length(), str2.length());
+        for (int i = 0; i < minLength; i++) {
+            if (str1.charAt(i) != str2.charAt(i)) {
+                similarity++;
+            }
+        }
+        similarity += Math.abs(str1.length() - str2.length());
+        return similarity;
+    }
 	
 }

@@ -1,2 +1,5 @@
-username, password, email, type, borrowing, renting, subscribed, lostBookCount, courses, tbHistory 
-brunni, hehehaha, brunni@gmail.com, STUDENT, 2024-02-23 book123 cd3 bibiana1/2023-02-23 book3 cd1 Vibiana1,, testing, 2, EECS3311,
+username,password,email,type,borrowing,renting,subscribed,lostBookCount,courses,tbHistory
+brunni,hehehaha,brunni@gmail.com,STUDENT,2024-02-23 cheese#2 times cheese#4/2023-02-23 rateconomy#5 rateconomy#6,,testing,2,EECS3311,
+TaylorSwift,tay,tayswifty@email.com,FACULTY,,,,,,
+beidouyuri,ilovelesbian,beidou@gmail.com,STUDENT,,,,,,
+manager,admin,themanager@gmail.com,MANAGER,,,,,,

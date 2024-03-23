@@ -8,6 +8,11 @@ public class Publisher {
 	private Set<String> books_published;
 	private String name;
 	
+	Publisher(String name, Set<String> books_published){
+		this.name = name;
+		this.books_published = books_published;
+	}
+	
 	public String getName() {
 		return name;
 	}

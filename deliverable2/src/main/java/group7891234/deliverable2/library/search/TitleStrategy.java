@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import group7891234.deliverable2.library.LibraryDataBase;
-import group7891234.deliverable2.library.Publisher;
 import group7891234.deliverable2.library.item.Item;
 
 public class TitleStrategy implements SearchStrategy{
@@ -16,7 +15,7 @@ public class TitleStrategy implements SearchStrategy{
 		Set<Item> results = new HashSet<>();
 		Set<Item> searchThrough = LibraryDataBase.getInstance().getItems();
 		for (Item item: searchThrough) {
-			if(item.getName() == "") {
+			if(Search.compareSimilarity(item.getName(), searchInput) < 10) {
 				results.add(item);
 			}
 		}
