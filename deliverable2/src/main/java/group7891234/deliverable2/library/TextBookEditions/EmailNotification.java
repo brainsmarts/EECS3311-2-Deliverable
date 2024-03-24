@@ -11,7 +11,7 @@ public class EmailNotification implements TextBookNotification{
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		System.out.println(user.getEmail() + "has been notified of a new edition");
 	}
 	
 }

@@ -15,8 +15,7 @@ public class NewsLetter extends Item{
 	}
 
 	@Override
-	public void accepts() {
-		// TODO Auto-generated method stub
-		
+	public void accepts(ItemVisitor visitor) {
+		visitor.visitNewsLetter(this);
 	}
 }

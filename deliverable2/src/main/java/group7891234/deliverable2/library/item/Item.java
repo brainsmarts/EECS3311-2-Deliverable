@@ -37,7 +37,7 @@ public abstract class Item {
 		enabled = false;
 	}
 	
-	public abstract void accepts();
+	public abstract void accepts(ItemVisitor vistor);
 	
 	public ItemType getType() {
 		return type;
@@ -61,5 +61,18 @@ public abstract class Item {
 
 	public String getContent() {
 		return content;
+	}
+	
+	public double getPrice() {
+		return price;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return (item.getId().compareTo(id) == 0);
+		
 	}
 }

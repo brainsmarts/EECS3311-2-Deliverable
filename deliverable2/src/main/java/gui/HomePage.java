@@ -23,6 +23,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 
 import group7891234.deliverable2.library.LibraryDataBase;
 import group7891234.deliverable2.library.item.Item;
@@ -47,9 +48,56 @@ public class HomePage extends JPanel{
 
 	public HomePage(User user) {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        this.user = user;
 
         // Create and add search bar
-        JButton requestButton = new JButton("Make a Request");
+        createSearchBar();
+
+        // Create and add book list
+        createBorrowedList();
+       
+        // Create and add open website newsletters
+        add(new JLabel("Subscribed"));
+        createNewsLetterList();
+        
+        revalidate();
+    }
+	
+	private void createBorrowedList() {
+		 Map<LocalDate, Set<String>> userItems = user.getBooksBorrowed();
+	        JPanel listContainer = new JPanel();
+	        JScrollPane scrollPane = new JScrollPane(listContainer);
+
+	        
+	        listContainer.setLayout(new BoxLayout(listContainer, BoxLayout.PAGE_AXIS));
+	        listContainer.setPreferredSize(new Dimension(300, 600));
+	        
+	        for (Map.Entry<LocalDate, Set<String>> entry : userItems.entrySet()) {
+	        	for(String string: entry.getValue()) {
+	        		try {
+						listContainer.add(getBorrowedItemDisplay(database.getItem(string), entry.getKey()));
+					} catch (Exception e) {
+						System.out.println("Book not found");
+					}
+	        	}
+	        }
+	        
+	        listContainer.revalidate();
+
+	        add(scrollPane);
+	}
+	
+	private void createSearchBar() {
+		JButton logOut = new JButton("Log Out");
+		logOut.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainUI.getInstance().logOut();
+			}
+			
+		});
+		JButton requestButton = new JButton("Make a Request");
         JPanel searchBar = new JPanel();
         JLabel searchLabel = new JLabel("Search:");
         searchLabel.setSize(50,50);
@@ -71,49 +119,61 @@ public class HomePage extends JPanel{
         	
         });
         
+        searchBar.add(logOut);
         searchBar.add(requestButton);
         searchBar.add(searchLabel);
         searchBar.add(searchField);
         searchBar.add(searchButton);
         searchBar.revalidate();
         add(searchBar);
-
-        // Create and add book list
-        Map<LocalDate, Set<String>> userItems = user.getBooksBorrowed();
-        JPanel listContainer = new JPanel();
-        JScrollPane scrollPane = new JScrollPane(listContainer);
-
-        
-        listContainer.setLayout(new BoxLayout(listContainer, BoxLayout.PAGE_AXIS));
-        listContainer.setPreferredSize(new Dimension(300, 600));
-        
-        for (Map.Entry<LocalDate, Set<String>> entry : userItems.entrySet()) {
-        	for(String string: entry.getValue()) {
-        		try {
-					listContainer.add(getBorrowedItemDisplay(database.getItem(string), entry.getKey()));
-					System.out.println("Book Found");
-				} catch (Exception e) {
-					System.out.println("Book not found");
-				}
-        	}
-        }
-        
-        listContainer.revalidate();
-
-        add(scrollPane);
- 
-        // Create and add open website newsletters
-        JButton openWebsiteButton = new JButton("Open Website");
-        openWebsiteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                openWebsite("https://google.com");
-            }
-        });
-        add(openWebsiteButton);
-         revalidate();
-    }
+	}
     
+	private void createNewsLetterList() {
+		List<String> list = user.getSubscribed();
+		JPanel listContainer = new JPanel();
+		for(String id: list) {
+			
+			try {
+				JPanel panel = getNewsLetterDisplayItem(database.getItem(id));
+				listContainer.add(panel);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		listContainer.revalidate();
+		
+		add(listContainer);
+		
+	}
+	
+	private JPanel getNewsLetterDisplayItem(Item item) {
+		System.out.println("News Created");
+		JPanel itemDisplay = new JPanel();
+		itemDisplay.setLayout(new GridLayout(4,1));
+		JLabel name = new JLabel(item.getName());
+		JLabel idLabel = new JLabel("ID: " + item.getId());
+        JLabel publisherLabel = new JLabel("Publisher: " + item.getPublisher().getName());
+        JButton viewNewsLetter = new JButton("View NewsLetter");
+        viewNewsLetter.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				openWebsite(item.getContent());
+			}
+        	
+        });
+        
+        itemDisplay.add(name);
+        itemDisplay.add(idLabel);
+        itemDisplay.add(publisherLabel);
+        itemDisplay.add(viewNewsLetter);
+        itemDisplay.setBorder(BorderFactory.createLineBorder(Color.black));
+        itemDisplay.setSize(300, 50);
+        itemDisplay.revalidate();
+		return itemDisplay;
+	}
+	
 	private JPanel getBorrowedItemDisplay(Item item, LocalDate date) {
 		JPanel itemDisplay = new JPanel();
 		itemDisplay.setLayout(new GridLayout(4,1));
@@ -131,6 +191,7 @@ public class HomePage extends JPanel{
         itemDisplay.revalidate();
 		return itemDisplay;
 	}
+
 	
     private void openWebsite(String url) {
         try {

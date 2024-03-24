@@ -52,14 +52,13 @@ public class RegisterPanel extends JPanel{
 	        Vector<String> options = new Vector<String>();
 	        optionsPanel.setVisible(false);
 	        
-	        int counter = 0;
 	        for(UserType userType: UserType.values()) {
 	        	options.add(userType.toString());
 	        }
 	        JComboBox<String> optionsList = new JComboBox<String>(options);
 	        this.add(optionsList);
 
-	        JButton loginButton = new JButton("Login");
+	        JButton loginButton = new JButton("Register");
 	        loginButton.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
@@ -73,6 +72,7 @@ public class RegisterPanel extends JPanel{
 	                // For simplicity, let's just display a message
 	               try {
 	            	   UserDataBase.getInstance().registerNewUser(username, password, email, UserType.valueOf(type));
+	            	   MainUI.getInstance().logOut();
 	            	   
 	               }catch(Exception exception) {
 	            	   

@@ -3,16 +3,21 @@ package group7891234.deliverable2.library;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import com.csvreader.CsvReader;
+import com.csvreader.CsvWriter;
 
 import group7891234.deliverable2.library.TextBookEditions.TextBookEdition;
 import group7891234.deliverable2.library.item.Item;
 import group7891234.deliverable2.library.item.ItemBuilder;
 import group7891234.deliverable2.library.item.ItemType;
+import group7891234.deliverable2.library.item.TextBook;
 import group7891234.deliverable2.library.search.AuthorStrategy;
 import group7891234.deliverable2.library.search.Search;
 import group7891234.deliverable2.library.search.TitleStrategy;
@@ -25,10 +30,12 @@ public class LibraryDataBase {
 			edition_path = "src/main/resources/library_editions.csv";
 	//type, id, name, enabled, publisher, content
 	private Set<Item> items;
+	private Map<String, Item> itemLookUp;
 	//name, books
 	private Set<Publisher> publishers;
 	//name, books, faculty to notice
 	List<TextBookEdition> textbook_series;
+	private Map<Item, Set<String>> borrowMap;
 	
 	private static LibraryDataBase instance; 
 	
@@ -38,6 +45,7 @@ public class LibraryDataBase {
 		items = new HashSet<Item>();
 		publishers = new HashSet<Publisher>();
 		textbook_series = new ArrayList<TextBookEdition>();
+		borrowMap = new HashMap<>(); 
 		try {
 			populate();
 		} catch (IOException e) {
@@ -67,6 +75,8 @@ public class LibraryDataBase {
 		      Publisher publisher = createPublisherFromRecord(reader);
 		      publishers.add(publisher);
 		    }
+		    reader.close();
+		    
 		    
 		    reader = new CsvReader(item_path);
 		    reader.readHeaders();
@@ -75,25 +85,56 @@ public class LibraryDataBase {
 			      Item item = createItemFromRecord(reader);
 			      items.add(item);
 			}
+		    reader.close();
 		    
 		    reader = new CsvReader(edition_path);
 		    reader.readHeaders();
+		    
+		    while(reader.readRecord()) {
+		    	System.out.println(reader.getRawRecord());
+		    	TextBookEdition series = createTextBookEditionFromRecord(reader);
+		    	textbook_series.add(series);
+		    }
+		    
 		  } finally {
+			for(Publisher publisher: publishers) {
+				//updatePublisherFile(publisher.getName());
+			}
 		    reader.close();  // Ensure closing the reader in a finally block
 		  }
 		//then populate items
 		//then editions
 	}
 	
+	private TextBookEdition createTextBookEditionFromRecord(CsvReader reader) {
+		TextBookEdition series = null;
+		try {
+			series = new TextBookEdition(reader.get("series"));
+			String[] test = reader.get("books").split(" ");
+			Set<TextBook> list = new HashSet<>();
+			for(String string : test) {
+				list.add((TextBook) getItem(string));
+			}
+			series.setEditions(list);
+			series.setFacultyNotifications(new HashSet<String>(Arrays.asList(reader.get("faculty").split(" "))));
+		}catch(Exception e) {
+			
+		}
+		return series;
+	}
+	
 	private Item createItemFromRecord(CsvReader reader) {
 		Item item = null;
 		try {
-			System.out.println(reader.get("type"));
 			ItemType type = ItemType.valueOf(reader.get("type"));
 			String id = reader.get("id");
 			String name = reader.get("name");
 			double price =Double.parseDouble(reader.get("price"));
 			Publisher publisher = getPublisher(reader.get("publisher"));
+			if(publisher.getName().compareTo("Unknown Publisher") == 0) {
+				publisher = new Publisher(reader.get("publisher"), Collections.emptySet());
+				addPublisher(publisher);
+			}
 			String content = reader.get("content");
 			item = new ItemBuilder().buildId(id).buildName(name).buildPrice(price).buildPublisher(publisher).buildContent(content).buildType(type).build();
 		} catch (IOException e) {
@@ -127,14 +168,19 @@ public class LibraryDataBase {
 	}
 	
 	public Item getItem(String id) throws Exception {
-		for(Item item: items) {
-			if(item.getId().compareTo(id) == 0) {
-				return item;
-			}
+		if(itemLookUp == null) {
+			itemLookUp = new HashMap<>();
+	        for (Item item : items) {
+	            itemLookUp.put(item.getId(), item);
+	        }
 		}
+		Item item = itemLookUp.get(id);
+	    if (item != null) 
+	        return item;
 		
 		throw new IllegalArgumentException("Item with ID " + id + " not found");
 	}
+	    
 	
 	public Publisher getPublisher(String name) {
 		for(Publisher publisher: publishers) {
@@ -143,14 +189,15 @@ public class LibraryDataBase {
 			}
 		}
 		
-		throw new IllegalArgumentException("Publisher with name " + name + "was not found");
+		return new Publisher("Unknown Publisher", Collections.EMPTY_SET);
 	}
 	
 	public Set<Item> search(String search) {
 		Search searchMethod = new Search();
 		searchMethod.setStrategy(new TitleStrategy());
-		String command = search.substring(0, 1);
+		String command = search.substring(0, 2);
 		if(command.compareTo("/p") == 0) {
+			System.out.println("Author Strategy");
 			searchMethod.setStrategy(new AuthorStrategy());
 		}else if(command.compareTo("/t") == 0) {
 			searchMethod.setStrategy(new TypeStrategy());
@@ -158,18 +205,164 @@ public class LibraryDataBase {
 		return searchMethod.getSearchResults(search.substring(3));
 	}
 	
+	public void addTextbook(TextBook tb) {
+		for(TextBookEdition series: textbook_series) {
+			if(tb.getId().split("#")[0].compareTo(series.getSeries()) == 0){
+				series.addTextBook(tb);
+				return;
+			}
+		}
+		TextBookEdition newSeries = new TextBookEdition(tb.getId().split("#")[0]);
+		newSeries.addTextBook(tb);
+		textbook_series.add(newSeries);
+	}
+	
 	public void addItem(Item item) {
+		if(items.contains(item)) {
+			System.out.print("Already In DataBase");
+			return;
+		}
 		items.add(item);
-		//write it into cvs
+		List<String[]> lines = new ArrayList<>();
+		try {
+			CsvReader reader = new CsvReader(this.item_path);
+
+			while(reader.readRecord()) {
+				  lines.add(reader.getValues());
+			}
+			
+			reader.close();
+			
+			CsvWriter writer = new CsvWriter(this.item_path);
+			
+			for(String[] string: lines) {
+				writer.writeRecord(string);
+			}
+			//type id name price enabled publisher content
+			writer.write(item.getType().toString());
+			writer.write(item.getId());
+			writer.write(item.getName());
+			writer.write(Double.toString(item.getPrice()));
+			writer.write(Boolean.toString(item.isEnabled()));
+			writer.write(item.getPublisher().getName());
+			writer.write(item.getContent());
+			
+			writer.close();
+		}catch(Exception e) {
+			
+		}
+		
+		if(item.getType() == ItemType.TEXTBOOK)
+			updateTextBookEditionsFile(item.getId().split("#")[0]);
 	}
 	
 	public void addPublisher(Publisher publisher) {
+		if(publishers.contains(publisher))
+			return;
 		publishers.add(publisher);
-		//write it into cvs
+		List<String[]> lines = new ArrayList<>();
+		try {
+			CsvReader reader = new CsvReader(this.publisher_path);
+
+			while(reader.readRecord()) {
+				  lines.add(reader.getValues());
+			}
+			
+			reader.close();
+			
+			CsvWriter writer = new CsvWriter(this.publisher_path);
+			
+			for(String[] string: lines) {
+				writer.writeRecord(string);
+			}
+			
+			writer.write(publisher.getName());
+			writer.write("");
+			
+			writer.close();
+		}catch(Exception e) {
+			
+		}
 	}
 	
-	public void addTextbookEdition(TextBookEdition tbe) {
-		textbook_series.add(tbe);
-		//write it into cvs
+	public Publisher createPublisher(String name) {
+		Publisher publisher = new Publisher(name, Collections.emptySet());
+		addPublisher(publisher);
+		return publisher;
+	}
+
+	public void updatePublisherFile(String publisherName) {
+		//get publisher list and rewrites a specific Publisher
+		//first read all
+		List<String[]> lines = new ArrayList<>();
+		try {
+			CsvReader reader = new CsvReader(this.publisher_path);
+			String booklist = "";
+			
+			while(reader.readRecord()) {
+				  lines.add(reader.getValues());
+			}
+			
+			reader.close();
+			
+			for(String[] string: lines) {
+				if(string[0].compareTo(publisherName) == 0) {
+					for(Item item: items) {
+						if(item.getPublisher().getName().compareTo(publisherName) == 0) {
+							booklist += item.getId() + " ";
+						}
+					}
+					string[1] = booklist;
+					break;
+				}
+			}
+			
+			CsvWriter writer = new CsvWriter(this.publisher_path);
+			for(String[] string: lines) {
+				writer.writeRecord(string);
+			}
+			writer.close();
+			
+		}catch(Exception e) {
+			
+		}
+		
+	}
+
+	public void updateTextBookEditionsFile(String series) {
+		List<String[]> lines = new ArrayList<>();
+		try {
+			CsvReader reader = new CsvReader(this.edition_path);
+			String booklist = "";
+			
+			while(reader.readRecord()) {
+				  lines.add(reader.getValues());
+			}
+			
+			reader.close();
+			
+			for (int i = 0; i < lines.size(); i++) {
+			    String[] line = lines.get(i);
+			    if (line[0].compareTo(series) == 0) {
+			        for (Item item : items) {
+			            if (item.getId().split("#")[0].compareTo(series) == 0) {
+			                booklist += item.getId() + " ";
+			            }
+			        }
+			        line[1] = booklist;
+			        lines.set(i, line);
+			        break;
+			    }
+			}
+			CsvWriter writer = new CsvWriter(this.edition_path);
+			for(String[] string: lines) {
+				writer.writeRecord(string);
+			}
+			
+			writer.close();
+			
+		}catch(Exception e) {
+			
+		}
 	}
 }

@@ -19,6 +19,7 @@ public class MainUI extends JFrame{
 	private JPanel loginPanel;
 	private HomePage homepagePanel;
 	private SearchResultPanel searchPanel;
+	private ViewContentPanel contentPanel;
 	
 	public static void main(String[] args) {
 		JFrame frame = MainUI.getInstance();
@@ -65,4 +66,21 @@ public class MainUI extends JFrame{
 		revalidate();
 	}
 
+	protected void changeContentPanel(Item item) {
+		if(contentPanel == null) {
+			contentPanel = new ViewContentPanel();
+		}
+		item.accepts(contentPanel);
+		revalidate();
+	}
+	
+	protected void logOut() {
+		this.loginPanel = new LoginPanel();
+		this.setContentPane(loginPanel);
+		this.homepagePanel = null;
+		this.searchPanel = null;
+		this.contentPanel = null;
+		this.user = null;
+		revalidate();
+	}
 }

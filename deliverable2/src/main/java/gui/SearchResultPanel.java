@@ -49,7 +49,6 @@ public class SearchResultPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				try {
-					
 					MainUI.getInstance().changeSearchResult(database.search(searchField.getText()));
 				}catch(Exception e1) {
 					

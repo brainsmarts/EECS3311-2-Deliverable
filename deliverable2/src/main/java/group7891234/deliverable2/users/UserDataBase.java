@@ -58,6 +58,7 @@ public class UserDataBase {
 
 	  user.setBorrowed(parseItemData(reader.get("borrowing")));
 	  user.setRenting(parseItemData(reader.get("renting")));
+	  user.setSubscribed(parseStringData(reader.get("subscribed")));
 	  
 	  switch(UserType.valueOf(reader.get("type"))){
 		  case STUDENT:
@@ -84,10 +85,11 @@ public class UserDataBase {
 	
 	private Set<String> parseStringData(String data){
 		if(data.isEmpty()) {
+			//System.out.println("Empty Subcribe");
 			return Collections.emptySet();
 		} 
-		
-		return new HashSet<>(Arrays.asList(data.split(" ")));
+		Set<String> set = new HashSet<>(Arrays.asList(data.split(" ")));
+		return set;
 	}
 
 	private Map<LocalDate, Set<String>> parseItemData(String data) {
@@ -111,6 +113,9 @@ public class UserDataBase {
 			throw new IllegalArgumentException("One Of The Fields is Empty");
 		User user = UserFactory.getUser(username, password, email, type);	
 		users.add(user);
+		user.setBorrowed(Collections.emptyMap());
+		user.setRenting(Collections.emptyMap());
+		user.setSubscribed(Collections.emptySet());
 		addUserToCSV(username, password, email, type);
 	}
 	
@@ -144,7 +149,6 @@ public class UserDataBase {
 			  
 			  while(reader.readRecord()) {
 				  lines.add(reader.getValues());
-				  System.out.println(lines);
 			  }
 			  for(String[] string : lines) {
 				  writer.writeRecord(string);
@@ -192,5 +196,9 @@ public class UserDataBase {
 			}
 		}
 		return false;
+	}
+	
+	public void updateFileData() {
+		
 	}
 }

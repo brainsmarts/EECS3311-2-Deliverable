@@ -40,10 +40,11 @@ public class LoginPanel extends JPanel{
 
                 // You can perform login authentication here
                 // For simplicity, let's just display a message
-                if(UserDataBase.getInstance().Login(username, password)) 
-                	//change from login to homepage            
+                if(UserDataBase.getInstance().Login(username, password)) {
+                	//change from login to homepage       
                 	MainUI.user = UserDataBase.getInstance().getUser(username);
                 	MainUI.getInstance().changeHomePage();
+                }
                
             }
         });

@@ -1,5 +1,6 @@
 package group7891234.deliverable2.library.item;
 
+import group7891234.deliverable2.library.LibraryDataBase;
 import group7891234.deliverable2.library.Publisher;
 
 public class ItemBuilder implements LibraryBuilder{

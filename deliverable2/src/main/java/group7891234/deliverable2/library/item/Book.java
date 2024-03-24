@@ -32,9 +32,9 @@ public class Book extends Item{
 	}
 
 	@Override
-	public void accepts() {
+	public void accepts(ItemVisitor visitor) {
 		// TODO Auto-generated method stub
-		
+		visitor.visitBook(this);
 	}
 	
 	

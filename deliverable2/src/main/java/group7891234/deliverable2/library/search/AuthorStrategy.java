@@ -14,7 +14,7 @@ public class AuthorStrategy implements SearchStrategy{
 		Set<Item> results = new HashSet<>();
 		Set<Item> searchThrough = LibraryDataBase.getInstance().getItems();
 		for (Item item: searchThrough) {
-			if(Search.compareSimilarity(item.getPublisher().getName(), searchInput) < 5) {
+			if(Search.compareSimilarity(item.getPublisher().getName(), searchInput) < 8) {
 				results.add(item);
 			}
 		}
