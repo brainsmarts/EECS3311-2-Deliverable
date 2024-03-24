@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 
 import group7891234.deliverable2.library.item.Item;
 import group7891234.deliverable2.users.User;
+import group7891234.deliverable2.users.factory.Manager;
+import group7891234.deliverable2.users.factory.UserType;
 
 public class MainUI extends JFrame{
 
@@ -17,9 +19,12 @@ public class MainUI extends JFrame{
 	protected static User user = null;
 	private static final long serialVersionUID = 1L;
 	private JPanel loginPanel;
+	private ViewItemPanel viewPanel;
 	private HomePage homepagePanel;
 	private SearchResultPanel searchPanel;
 	private ViewContentPanel contentPanel;
+	private RequestPanel requestPanel;
+	private RequestManagerPanel requestManager;
 	
 	public static void main(String[] args) {
 		JFrame frame = MainUI.getInstance();
@@ -59,10 +64,33 @@ public class MainUI extends JFrame{
 		this.setContentPane(homepagePanel);
 		revalidate();
 	}
-
+	
+	protected void changeRequestPage() {
+		if(requestPanel == null) {
+			requestPanel = new RequestPanel();
+			
+		}
+		
+		if(user.getType() == UserType.MANAGER) {
+			requestManager = new RequestManagerPanel((Manager)user);
+			this.setContentPane(requestManager);
+		} else {
+			this.setContentPane(requestPanel);
+		}
+		
+		revalidate();
+	}
+	
 	public void changeRegisterPage() {
 		// TODO Auto-generated method stub
 		this.setContentPane(new RegisterPanel());
+		revalidate();
+	}
+	
+	protected void changeItemViewPanel(Item item) {
+		viewPanel = new ViewItemPanel(item, user);
+		item.accepts(viewPanel);
+		this.setContentPane(viewPanel);
 		revalidate();
 	}
 
@@ -71,6 +99,7 @@ public class MainUI extends JFrame{
 			contentPanel = new ViewContentPanel();
 		}
 		item.accepts(contentPanel);
+		this.setContentPane(contentPanel);
 		revalidate();
 	}
 	

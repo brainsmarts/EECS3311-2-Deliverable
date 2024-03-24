@@ -27,6 +27,7 @@ import javax.swing.ScrollPaneConstants;
 
 import group7891234.deliverable2.library.LibraryDataBase;
 import group7891234.deliverable2.library.item.Item;
+import group7891234.deliverable2.library.item.NewsLetter;
 import group7891234.deliverable2.users.User;
 
 public class HomePage extends JPanel{
@@ -98,6 +99,14 @@ public class HomePage extends JPanel{
 			
 		});
 		JButton requestButton = new JButton("Make a Request");
+		requestButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				MainUI.getInstance().changeRequestPage();
+			}	
+		});
         JPanel searchBar = new JPanel();
         JLabel searchLabel = new JLabel("Search:");
         searchLabel.setSize(50,50);
@@ -154,6 +163,8 @@ public class HomePage extends JPanel{
 		JLabel name = new JLabel(item.getName());
 		JLabel idLabel = new JLabel("ID: " + item.getId());
         JLabel publisherLabel = new JLabel("Publisher: " + item.getPublisher().getName());
+        
+        JPanel buttonLayout = new JPanel();
         JButton viewNewsLetter = new JButton("View NewsLetter");
         viewNewsLetter.addActionListener(new ActionListener() {
 
@@ -163,11 +174,22 @@ public class HomePage extends JPanel{
 			}
         	
         });
+        JButton unsubscribe = new JButton("Unsubscribe");
+        unsubscribe.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				user.UnSubscribe((NewsLetter)item);
+			}
+        	
+        });
+        buttonLayout.add(viewNewsLetter);
+        buttonLayout.add(unsubscribe);
         
         itemDisplay.add(name);
         itemDisplay.add(idLabel);
         itemDisplay.add(publisherLabel);
-        itemDisplay.add(viewNewsLetter);
+        itemDisplay.add(buttonLayout);
         itemDisplay.setBorder(BorderFactory.createLineBorder(Color.black));
         itemDisplay.setSize(300, 50);
         itemDisplay.revalidate();

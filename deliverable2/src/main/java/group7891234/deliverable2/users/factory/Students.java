@@ -9,6 +9,7 @@ public class Students extends User{
 	
 	public Students(String username, String password, String email) {
 		super(username, password, email);
+		this.type = UserType.STUDENT;
 		// TODO Auto-generated constructor stub
 	}
 	

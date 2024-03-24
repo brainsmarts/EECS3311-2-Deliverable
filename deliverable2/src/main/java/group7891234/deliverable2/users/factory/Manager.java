@@ -10,6 +10,7 @@ public class Manager extends User{
 
 	public Manager(String username, String password, String email) {
 		super(username, password, email);
+		this.type = UserType.MANAGER;
 		// TODO Auto-generated constructor stub
 	}
 	

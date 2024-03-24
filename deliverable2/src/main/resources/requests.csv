@@ -1,0 +1,13 @@
+itemType,name,id,publisher,requestType,users
+BOOK,The Great Cheese,tgceee,TheRatking,COURSE_TEACHING,brunni TaylorSwift
+NEWSLETTER,The Cheese Times,tcteee,TheRatking,SELF_IMPROVEMENT,brunni TaylorSwift
+ONLINEBOOK,Critter Books Interactive,cbinc,CrittersINC,COURSE_TEACHING,brunni TaylorSwift
+TEXTBOOK,The Cups around the world,tcatw#1,TheCupking,COURSE_TEACHING,brunni TaylorSwift
+BOOK,The Cheddar Adventure,tchadv,CheeseAdventures Inc.,SELF_IMPROVEMENT,TaylorSwift beidouyuri
+NEWSLETTER,Swiss Cheese Gazette,scgaz,CheesePublications,SELF_IMPROVEMENT,TaylorSwift beidouyuri
+ONLINEBOOK,Fromage Fantasy: A Tale of Curds and Whey,ffatcw,CheeseTales Online,COURSE_TEACHING,brunni
+TEXTBOOK,Gouda's Guide to Cheese Making,tggcm#2,CurdsAndWhey Press,COURSE_TEACHING,beidouyuri
+BOOK,Mozzarella Memoirs,mmemoirs,Dairy Delights Inc.,SELF_IMPROVEMENT,TaylorSwift beidouyuri
+NEWSLETTER,Cheddar Chronicles,chchron,CheeseMagazine Co.,COURSE_TEACHING,brunni
+ONLINEBOOK,The Brie Bible: A Guide to Cheese Worship,briebook,CheeseWorship Online,SELF_IMPROVEMENT,brunni TaylorSwift
+TEXTBOOK,Parmesan Principles: The Fundamentals of Cheese Theory,pprinciples#1,CheeseUniversity Press,COURSE_TEACHING,beidouyuri

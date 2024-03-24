@@ -81,10 +81,6 @@ public class SearchResultPanel extends JPanel{
 		
 	}
 	
-	protected void displaySearchResult(Set<Item> searchResults) {
-		
-	}
-	
 	private JPanel createItemDisplay(Item item) {
 		JPanel itemDisplay = new JPanel();
 		JPanel displayInfo = new JPanel();
@@ -92,6 +88,14 @@ public class SearchResultPanel extends JPanel{
 		JLabel id = new JLabel(item.getId());
 		JLabel publisher = new JLabel(item.getPublisher().getName());
 		JButton viewItem = new JButton("View Item");
+		viewItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainUI.getInstance().changeItemViewPanel(item);
+			}
+			
+		});
 		displayInfo.setLayout(new BoxLayout(displayInfo, BoxLayout.Y_AXIS));
 		
 		displayInfo.add(name);

@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.Desktop;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -24,27 +25,33 @@ import group7891234.deliverable2.library.item.TextBook;
 public class ViewContentPanel extends JPanel implements ItemVisitor{
 	
 	private LibraryDataBase database = LibraryDataBase.getInstance();
-	
+	JPanel contentPanel = new JPanel();
 	public ViewContentPanel() {
 		//create search bar
+		setLayout(new GridLayout(2,1));
 		createSearchBar();
+		add(contentPanel);
 		//create content panel
 	}
 	
 	@Override
 	public void visitBook(Book book) {
 		// TODO Auto-generated method stub
-		
+		contentPanel.add(new JLabel("Akward... but this is a physical item"));
+		contentPanel.revalidate();
 	}
 
 	@Override
 	public void visitOnlineBook(OnlineBook book) {
 		// TODO Auto-generated method stub
-		
+		contentPanel.add(new JLabel(book.getContent()));
+		contentPanel.revalidate();
 	}
 
 	@Override
 	public void visitNewsLetter(NewsLetter news) {
+		contentPanel.add(new JLabel(news.getContent() + " was opened in your default browser"));
+		contentPanel.revalidate();
 		try {
             Desktop.getDesktop().browse(new URI(news.getContent()));
         } catch (URISyntaxException | IOException ex) {
@@ -54,11 +61,20 @@ public class ViewContentPanel extends JPanel implements ItemVisitor{
 
 	@Override
 	public void visitTextBook(TextBook book) {
-		// TODO Auto-generated method stub
+		contentPanel.add(new JLabel("Akward... but this is a physical item"));
+		contentPanel.revalidate();
 	}
 	
 	private void createSearchBar() {
-		JButton requestButton = new JButton("Make a Request");
+		JButton home = new JButton("Home");
+		home.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				MainUI.getInstance().changeHomePage();
+			}
+		});
         JPanel searchBar = new JPanel();
         JLabel searchLabel = new JLabel("Search:");
         searchLabel.setSize(50,50);
@@ -71,7 +87,6 @@ public class ViewContentPanel extends JPanel implements ItemVisitor{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				try {
-					
 					MainUI.getInstance().changeSearchResult(database.search(searchField.getText()));
 				}catch(Exception e1) {
 					
@@ -80,7 +95,7 @@ public class ViewContentPanel extends JPanel implements ItemVisitor{
         	
         });
         
-        searchBar.add(requestButton);
+        searchBar.add(home);
         searchBar.add(searchLabel);
         searchBar.add(searchField);
         searchBar.add(searchButton);

@@ -14,12 +14,26 @@ import java.util.Set;
 import group7891234.deliverable2.library.item.Book;
 import group7891234.deliverable2.library.item.Item;
 import group7891234.deliverable2.library.item.NewsLetter;
+import group7891234.deliverable2.users.factory.UserType;
 
 public abstract class User {
+	protected UserType type;
 	private String username;
 	private String password;
 	private String email;
-
+	private Map<LocalDate, Set<String>> booksBorrowed;
+	private Map<LocalDate, Set<String>> itemsRented;
+	private List<String> subscribed;
+	private int lostBookCount = 0;
+	
+	protected User(String username, String password, String email){
+		this.username = username; 
+		this.password = password;
+		this.email = email;
+		booksBorrowed = new HashMap<>();
+		itemsRented = new HashMap<>();
+	}
+	
 	public String getUserName() {
 		return username;
 	}
@@ -48,20 +62,11 @@ public abstract class User {
 		return lostBookCount;
 	}
 
-	private Map<LocalDate, Set<String>> booksBorrowed;
-	private Map<LocalDate, Set<String>> itemsRented;
-	private List<String> subscribed;
-	private int lostBookCount = 0;
-	
-	protected User(String username, String password, String email){
-		this.username = username; 
-		this.password = password;
-		this.email = email;
-		booksBorrowed = new HashMap<>();
-		itemsRented = new HashMap<>();
+	public UserType getType() {
+		return type;
 	}
 	
-	protected boolean CorrectLogin(String username, String password) {
+ 	protected boolean CorrectLogin(String username, String password) {
 		return (username.compareTo(this.username) == 0 && password.compareTo(this.password) == 0);
 	}
 	
@@ -79,16 +84,32 @@ public abstract class User {
         booksBorrowed.computeIfAbsent(currentDate, k -> new HashSet<>()).add(book.getId());
 	}
 	
-	public void addItem(Item item) {
+	public boolean addItem(Item item) {
 		//if date already exists, then simply add to the list
+		if(numOfItems() >= 10) {
+			return false;
+		}
 		LocalDate currentDate = LocalDate.now();
-        itemsRented.computeIfAbsent(currentDate, k -> new HashSet<>()).add(item.getId());
+		if(booksBorrowed.get(currentDate) == null) {
+			booksBorrowed.put(currentDate,new HashSet<>());
+		}
+		
+		booksBorrowed.get(currentDate).add(item.getId());
+        
+        return true;
+	}
+	
+	private int numOfItems() {
+		int counter = 0;
+		for(Set<String> set: itemsRented.values()) {
+			counter += set.size();
+		}
+		return counter;
 	}
 	
 	public String getEmail() {
 		return email;
 	}
-	
 	
 	protected void setBorrowed(Map<LocalDate, Set<String>> borrowed) {
 		this.booksBorrowed = borrowed;

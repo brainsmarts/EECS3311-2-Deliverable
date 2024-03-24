@@ -91,7 +91,6 @@ public class LibraryDataBase {
 		    reader.readHeaders();
 		    
 		    while(reader.readRecord()) {
-		    	System.out.println(reader.getRawRecord());
 		    	TextBookEdition series = createTextBookEditionFromRecord(reader);
 		    	textbook_series.add(series);
 		    }
