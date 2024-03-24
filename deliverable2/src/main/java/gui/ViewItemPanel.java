@@ -31,7 +31,8 @@ public class ViewItemPanel extends JPanel implements ItemVisitor{
 	JButton add;
 	
 	public ViewItemPanel(Item item, User user) {
-		setLayout(new GridLayout(2,1));
+		
+		setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		this.user = user;
 		createSearchBar();
 		JLabel name = new JLabel("Name: " + item.getName());
@@ -57,7 +58,7 @@ public class ViewItemPanel extends JPanel implements ItemVisitor{
 		add.setSize(600, 50);
 		JPanel contentPanel = new JPanel();
 		contentPanel.setSize(300, 600);
-		contentPanel.setLayout(new BoxLayout(contentPanel,BoxLayout.Y_AXIS));
+		contentPanel.setLayout(new GridLayout(4,1));
 		//uses item visitor class to do it so no cases are needed
 		//2 buttons
 		//BorrowBook / Add to Cart
@@ -68,6 +69,18 @@ public class ViewItemPanel extends JPanel implements ItemVisitor{
 		contentPanel.add(getContent);
 		contentPanel.revalidate();
 		add(contentPanel, BorderLayout.SOUTH);
+		if(!item.isEnabled()){
+			setLayout(new GridLayout(2,1));
+			JPanel disabledPanel = new JPanel();
+			disabledPanel.add(name);
+			disabledPanel.add(new JLabel("Currently Unavailable"));
+			disabledPanel.revalidate();
+			add(disabledPanel);
+			contentPanel.setVisible(false);
+			contentPanel.revalidate();
+			revalidate();
+		}
+		
 	}
 	
 	private void createSearchBar() {
@@ -101,6 +114,7 @@ public class ViewItemPanel extends JPanel implements ItemVisitor{
 			}
         	
         });
+        //searchBar.setLayout(new GridLayout(1,4));
         
         searchBar.add(homeButton);
         searchBar.add(searchLabel);

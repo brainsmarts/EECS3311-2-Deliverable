@@ -64,100 +64,6 @@ public class LibraryDataBase {
 		}
 		return instance;
 	}
-	
-	private void populate() throws IOException {
-		//first populate publishers
-		CsvReader reader = new CsvReader(publisher_path); // Open the reader
-		  try {
-		    reader.readHeaders();
-
-		    while (reader.readRecord()) {
-		      Publisher publisher = createPublisherFromRecord(reader);
-		      publishers.add(publisher);
-		    }
-		    reader.close();
-		    
-		    
-		    reader = new CsvReader(item_path);
-		    reader.readHeaders();
-		    
-		    while (reader.readRecord()) {
-			      Item item = createItemFromRecord(reader);
-			      items.add(item);
-			}
-		    reader.close();
-		    
-		    reader = new CsvReader(edition_path);
-		    reader.readHeaders();
-		    
-		    while(reader.readRecord()) {
-		    	TextBookEdition series = createTextBookEditionFromRecord(reader);
-		    	textbook_series.add(series);
-		    }
-		    
-		  } finally {
-			for(Publisher publisher: publishers) {
-				//updatePublisherFile(publisher.getName());
-			}
-		    reader.close();  // Ensure closing the reader in a finally block
-		  }
-		//then populate items
-		//then editions
-	}
-	
-	private TextBookEdition createTextBookEditionFromRecord(CsvReader reader) {
-		TextBookEdition series = null;
-		try {
-			series = new TextBookEdition(reader.get("series"));
-			String[] test = reader.get("books").split(" ");
-			Set<TextBook> list = new HashSet<>();
-			for(String string : test) {
-				list.add((TextBook) getItem(string));
-			}
-			series.setEditions(list);
-			series.setFacultyNotifications(new HashSet<String>(Arrays.asList(reader.get("faculty").split(" "))));
-		}catch(Exception e) {
-			
-		}
-		return series;
-	}
-	
-	private Item createItemFromRecord(CsvReader reader) {
-		Item item = null;
-		try {
-			ItemType type = ItemType.valueOf(reader.get("type"));
-			String id = reader.get("id");
-			String name = reader.get("name");
-			double price =Double.parseDouble(reader.get("price"));
-			Publisher publisher = getPublisher(reader.get("publisher"));
-			if(publisher.getName().compareTo("Unknown Publisher") == 0) {
-				publisher = new Publisher(reader.get("publisher"), Collections.emptySet());
-				addPublisher(publisher);
-			}
-			String content = reader.get("content");
-			item = new ItemBuilder().buildId(id).buildName(name).buildPrice(price).buildPublisher(publisher).buildContent(content).buildType(type).build();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if(item == null)
-			throw new IllegalArgumentException();
-		return item;
-	}
-
-	private Publisher createPublisherFromRecord(CsvReader reader) {
-		// TODO Auto-generated method stub
-		Publisher publisher = null;
-		try {
-			publisher = new Publisher(reader.get("name"), new HashSet<>(Arrays.asList(reader.get("books").split(" "))));	
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if(publisher == null)
-			throw new IllegalArgumentException();
-		return publisher;
-	}
 
 	//provides a new set of items but not the actual items of the library base to prevent manipulation from outside of the library class.
 	public Set<Item> getItems(){
@@ -179,10 +85,9 @@ public class LibraryDataBase {
 		
 		throw new IllegalArgumentException("Item with ID " + id + " not found");
 	}
-	    
 	
 	public Publisher getPublisher(String name) {
-		for(Publisher publisher: publishers) {
+		for(Publisher publisher: getPublishers()) {
 			if(publisher.getName().compareToIgnoreCase(name) == 0) {
 				return publisher;
 			}
@@ -256,9 +161,9 @@ public class LibraryDataBase {
 	}
 	
 	public void addPublisher(Publisher publisher) {
-		if(publishers.contains(publisher))
+		if(getPublishers().contains(publisher))
 			return;
-		publishers.add(publisher);
+		getPublishers().add(publisher);
 		List<String[]> lines = new ArrayList<>();
 		try {
 			CsvReader reader = new CsvReader(this.publisher_path);
@@ -363,5 +268,103 @@ public class LibraryDataBase {
 		}catch(Exception e) {
 			
 		}
+	}
+
+	private void populate() throws IOException {
+		//first populate publishers
+		CsvReader reader = new CsvReader(publisher_path); // Open the reader
+		  try {
+		    reader.readHeaders();
+
+		    while (reader.readRecord()) {
+		      Publisher publisher = createPublisherFromRecord(reader);
+		      getPublishers().add(publisher);
+		    }
+		    reader.close();
+		    
+		    
+		    reader = new CsvReader(item_path);
+		    reader.readHeaders();
+		    
+		    while (reader.readRecord()) {
+			      Item item = createItemFromRecord(reader);
+			      items.add(item);
+			}
+		    reader.close();
+		    
+		    reader = new CsvReader(edition_path);
+		    reader.readHeaders();
+		    
+		    while(reader.readRecord()) {
+		    	TextBookEdition series = createTextBookEditionFromRecord(reader);
+		    	textbook_series.add(series);
+		    }
+		    
+		  } finally {
+			for(Publisher publisher: getPublishers()) {
+				//updatePublisherFile(publisher.getName());
+			}
+		    reader.close();  // Ensure closing the reader in a finally block
+		  }
+		//then populate items
+		//then editions
+	}
+
+	private TextBookEdition createTextBookEditionFromRecord(CsvReader reader) {
+		TextBookEdition series = null;
+		try {
+			series = new TextBookEdition(reader.get("series"));
+			String[] test = reader.get("books").split(" ");
+			Set<TextBook> list = new HashSet<>();
+			for(String string : test) {
+				list.add((TextBook) getItem(string));
+			}
+			series.setEditions(list);
+			series.setFacultyNotifications(new HashSet<String>(Arrays.asList(reader.get("faculty").split(" "))));
+		}catch(Exception e) {
+			
+		}
+		return series;
+	}
+
+	private Item createItemFromRecord(CsvReader reader) {
+		Item item = null;
+		try {
+			ItemType type = ItemType.valueOf(reader.get("type"));
+			String id = reader.get("id");
+			String name = reader.get("name");
+			double price =Double.parseDouble(reader.get("price"));
+			Publisher publisher = getPublisher(reader.get("publisher"));
+			if(publisher.getName().compareTo("Unknown Publisher") == 0) {
+				publisher = new Publisher(reader.get("publisher"), Collections.emptySet());
+				addPublisher(publisher);
+			}
+			String content = reader.get("content");
+			item = new ItemBuilder().buildId(id).buildName(name).buildPrice(price).buildPublisher(publisher).buildContent(content).buildType(type).build();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(item == null)
+			throw new IllegalArgumentException();
+		return item;
+	}
+
+	private Publisher createPublisherFromRecord(CsvReader reader) {
+		// TODO Auto-generated method stub
+		Publisher publisher = null;
+		try {
+			publisher = new Publisher(reader.get("name"), new HashSet<>(Arrays.asList(reader.get("books").split(" "))));	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(publisher == null)
+			throw new IllegalArgumentException();
+		return publisher;
+	}
+
+	public Set<Publisher> getPublishers() {
+		return publishers;
 	}
 }

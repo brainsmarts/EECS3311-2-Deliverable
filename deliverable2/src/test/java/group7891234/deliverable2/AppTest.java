@@ -28,6 +28,21 @@ public class AppTest
      */
 	
 	@Test
+	public void testLibrary() {
+		UserDataBase database = UserDataBase.getInstance();
+		LibraryDataBase ldatabase = LibraryDataBase.getInstance();
+		/*
+		for(Item item : ldatabase.getItems()) {
+			System.out.println(item.getId());
+		}
+		*/
+		/*
+		for(Publisher publisher: ldatabase.getPublishers()) {
+			System.out.println(publisher.getName());
+		}
+		*/
+	}
+	
 	public void Testhahahhasdhasdfjaskjdfhasdf() throws Exception {
 		UserDataBase database = UserDataBase.getInstance();
 		LibraryDataBase ldatabase = LibraryDataBase.getInstance();

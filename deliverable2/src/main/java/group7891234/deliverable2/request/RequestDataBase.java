@@ -140,8 +140,8 @@ public class RequestDataBase {
 		requests.get(request).add(user.getUserName());
 	}
 	
-	public void addRequest(ItemType itemType, String name, String id, String publisher,  RequestType type, String[] users ) {
-		Request request = new Request(itemType, name, id, publisher, type);
+	public void addRequest(ItemType itemType, String id,String name, String publisher,  RequestType type, String[] users ) {
+		Request request = new Request(itemType, id, name, publisher, type);
 		requests.put(request, new ArrayList<String>());
 	}
 		
@@ -174,7 +174,7 @@ public class RequestDataBase {
 			String publisher = reader.get("publisher");
 			RequestType requestType = RequestType.valueOf(reader.get("requestType"));
 			
-			addRequest(type,name, id,publisher,  requestType,  reader.get("users").split(" "));
+			addRequest(type,id ,name,publisher,  requestType,  reader.get("users").split(" "));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

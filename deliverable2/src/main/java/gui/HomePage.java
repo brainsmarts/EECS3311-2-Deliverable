@@ -9,7 +9,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.sql.Date;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -198,7 +200,7 @@ public class HomePage extends JPanel{
 	
 	private JPanel getBorrowedItemDisplay(Item item, LocalDate date) {
 		JPanel itemDisplay = new JPanel();
-		itemDisplay.setLayout(new GridLayout(4,1));
+		itemDisplay.setLayout(new GridLayout(5,1));
 		JLabel name = new JLabel(item.getName());
 		JLabel idLabel = new JLabel("ID: " + item.getId());
         JLabel publisherLabel = new JLabel("Publisher: " + item.getPublisher().getName());
@@ -208,10 +210,29 @@ public class HomePage extends JPanel{
         itemDisplay.add(idLabel);
         itemDisplay.add(publisherLabel);
         itemDisplay.add(dueDateLabel);
+        itemDisplay.add(getWarning(date));
         itemDisplay.setBorder(BorderFactory.createLineBorder(Color.black));
         itemDisplay.setSize(300, 50);
         itemDisplay.revalidate();
 		return itemDisplay;
+	}
+	
+	private JLabel getWarning(LocalDate date) {
+		JLabel warning = new JLabel("Label"); 
+		long days = date.until(LocalDate.now(), ChronoUnit.DAYS);
+		if(date.isBefore(LocalDate.now()))
+			days *= -1;
+		if(days < 5) {
+			if(days >= 0) {
+				warning.setText("You have " + days + " days left to return your book");
+			} else{
+				warning.setText("You are " + days + " days overdue to return your book");
+			}
+		}else {
+			warning.setVisible(false);
+		}
+		warning.revalidate();
+		return warning;	
 	}
 
 	
