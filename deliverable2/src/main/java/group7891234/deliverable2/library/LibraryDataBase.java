@@ -341,6 +341,12 @@ public class LibraryDataBase {
 			}
 			String content = reader.get("content");
 			item = new ItemBuilder().buildId(id).buildName(name).buildPrice(price).buildPublisher(publisher).buildContent(content).buildType(type).build();
+			if(Boolean.parseBoolean(reader.get("enabled"))) {
+				item.enable();
+			}else {
+				item.disable();
+			}
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
