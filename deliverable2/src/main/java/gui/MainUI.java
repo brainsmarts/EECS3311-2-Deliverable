@@ -109,7 +109,9 @@ public class MainUI extends JFrame{
 		this.homepagePanel = null;
 		this.searchPanel = null;
 		this.contentPanel = null;
-		this.user = null;
+		requestPanel = null;
+		requestManager = null;
+		this.user = null; 
 		revalidate();
 	}
 }

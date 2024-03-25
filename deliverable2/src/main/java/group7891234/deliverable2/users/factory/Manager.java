@@ -29,15 +29,22 @@ public class Manager extends User{
 		request.getName();
 		ItemBuilder build = new ItemBuilder();
 	
-		Item requestItem = 	build.buildId(
-				request.getId())
-				.buildType(request.getItemType())
-				.buildName(request.getName())
-				.buildPublisher(LibraryDataBase.getInstance().getPublisher(request.getPublisher()))
-				.build();
-		requestItem.enable();
+		Item requestItem;
+		try {
+			requestItem = build.buildId(
+					request.getId())
+					.buildType(request.getItemType())
+					.buildName(request.getName())
+					.buildPublisher(LibraryDataBase.getInstance().getPublisher(request.getPublisher()))
+					.build();
+			requestItem.enable();
+			
+			LibraryDataBase.getInstance().addItem(requestItem);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		LibraryDataBase.getInstance().addItem(requestItem);
 	}
 
 }

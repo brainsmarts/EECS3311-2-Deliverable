@@ -27,7 +27,8 @@ public class LibraryDataBase {
 	private String 
 			item_path = "src/main/resources/library_items.csv", 
 			publisher_path = "src/main/resources/library_publishers.csv", 
-			edition_path = "src/main/resources/library_editions.csv";
+			edition_path = "src/main/resources/library_editions.csv",
+			borrowing_path = "src/main/resources/library_borrowing.csv";
 	//type, id, name, enabled, publisher, content
 	private Set<Item> items;
 	private Map<String, Item> itemLookUp;
@@ -35,7 +36,7 @@ public class LibraryDataBase {
 	private Set<Publisher> publishers;
 	//name, books, faculty to notice
 	List<TextBookEdition> textbook_series;
-	private Map<Item, Set<String>> borrowMap;
+	private Map<String, Set<String>> borrowMap;
 	
 	private static LibraryDataBase instance; 
 	
@@ -86,14 +87,14 @@ public class LibraryDataBase {
 		throw new IllegalArgumentException("Item with ID " + id + " not found");
 	}
 	
-	public Publisher getPublisher(String name) {
+	public Publisher getPublisher (String name) throws Exception {
 		for(Publisher publisher: getPublishers()) {
 			if(publisher.getName().compareToIgnoreCase(name) == 0) {
 				return publisher;
 			}
 		}
 		
-		return new Publisher("Unknown Publisher", Collections.EMPTY_SET);
+		throw new IllegalArgumentException("Publisher could not be found");
 	}
 	
 	public Set<Item> search(String search) {
@@ -121,6 +122,7 @@ public class LibraryDataBase {
 		textbook_series.add(newSeries);
 	}
 	
+	//do not use during initilization ONLY USE after
 	public void addItem(Item item) {
 		if(items.contains(item)) {
 			System.out.print("Already In DataBase");
@@ -157,9 +159,10 @@ public class LibraryDataBase {
 		}
 		
 		if(item.getType() == ItemType.TEXTBOOK)
-			updateTextBookEditionsFile(item.getId().split("#")[0]);
+			updateTextBookEditionsFile();
 	}
 	
+	//do not use during initilization ONLY USE after
 	public void addPublisher(Publisher publisher) {
 		if(getPublishers().contains(publisher))
 			return;
@@ -195,78 +198,54 @@ public class LibraryDataBase {
 		return publisher;
 	}
 
-	public void updatePublisherFile(String publisherName) {
+	public void updateFile() {
+		updatePublisherFile();
+		updateTextBookEditionsFile();
+		updateItemsFile();
+	}
+	public void updatePublisherFile() {
 		//get publisher list and rewrites a specific Publisher
 		//first read all
-		List<String[]> lines = new ArrayList<>();
-		try {
-			CsvReader reader = new CsvReader(this.publisher_path);
-			String booklist = "";
-			
-			while(reader.readRecord()) {
-				  lines.add(reader.getValues());
-			}
-			
-			reader.close();
-			
-			for(String[] string: lines) {
-				if(string[0].compareTo(publisherName) == 0) {
-					for(Item item: items) {
-						if(item.getPublisher().getName().compareTo(publisherName) == 0) {
-							booklist += item.getId() + " ";
-						}
-					}
-					string[1] = booklist;
-					break;
-				}
-			}
-			
+		String[] header = {"name", "books"};
+		String[] line = new String[2]; 
+ 		try {
 			CsvWriter writer = new CsvWriter(this.publisher_path);
-			for(String[] string: lines) {
-				writer.writeRecord(string);
+			//publisher is literally name then books, just rewrite the entire thing
+			writer.writeRecord(header);
+			for(Publisher publisher: publishers) {
+				line[0] = publisher.getName();
+				line[1] = String.join(" ", publisher.getBooks());
+				writer.writeRecord(line);
 			}
 			writer.close();
 			
 		}catch(Exception e) {
-			
+			e.printStackTrace();
 		}
-		
 	}
 
-	public void updateTextBookEditionsFile(String series) {
-		List<String[]> lines = new ArrayList<>();
-		try {
-			CsvReader reader = new CsvReader(this.edition_path);
-			String booklist = "";
-			
-			while(reader.readRecord()) {
-				  lines.add(reader.getValues());
+	public void updateTextBookEditionsFile() {
+		String[] header = {"series", "books","faculty"};
+		String[] line = new String[3]; 
+		String tempBooks = "";
+		String tempFaculty = "";
+ 		try {
+			CsvWriter writer = new CsvWriter(this.publisher_path);
+			//publisher is literally name then books, just rewrite the entire thing
+			writer.writeRecord(header);
+			for(TextBookEdition series : this.textbook_series) {
+				line[0] = series.getSeries();
+				for(TextBook book:series.getEditions())
+					tempBooks += book.getId() + " ";
+				line[1] = tempBooks;
+				
+				line[2] = String.join(" ",series.getFaculty());
+				writer.writeRecord(line);
 			}
-			
-			reader.close();
-			
-			for (int i = 0; i < lines.size(); i++) {
-			    String[] line = lines.get(i);
-			    if (line[0].compareTo(series) == 0) {
-			        for (Item item : items) {
-			            if (item.getId().split("#")[0].compareTo(series) == 0) {
-			                booklist += item.getId() + " ";
-			            }
-			        }
-			        line[1] = booklist;
-			        lines.set(i, line);
-			        break;
-			    }
-			}
-			CsvWriter writer = new CsvWriter(this.edition_path);
-			for(String[] string: lines) {
-				writer.writeRecord(string);
-			}
-			
 			writer.close();
 			
 		}catch(Exception e) {
-			
+			e.printStackTrace();
 		}
 	}
 
@@ -278,7 +257,7 @@ public class LibraryDataBase {
 
 		    while (reader.readRecord()) {
 		      Publisher publisher = createPublisherFromRecord(reader);
-		      getPublishers().add(publisher);
+		      publishers.add(publisher);
 		    }
 		    reader.close();
 		    
@@ -300,14 +279,44 @@ public class LibraryDataBase {
 		    	textbook_series.add(series);
 		    }
 		    
-		  } finally {
-			for(Publisher publisher: getPublishers()) {
-				//updatePublisherFile(publisher.getName());
-			}
+		    reader = new CsvReader(borrowing_path);
+		    reader.readHeaders();
+		    
+		    createBorrowingMap(reader);
+		  }catch(Exception e) {
+			  e.printStackTrace();
+		  }finally {
+			  //update each file to ensure they are up to date
+			updateFile();
 		    reader.close();  // Ensure closing the reader in a finally block
 		  }
 		//then populate items
 		//then editions
+	}
+
+	public void updateItemsFile(CsvReader reader) {
+		String[] header = {"type", "id","name","price","enabled","publisher","content"};
+		String[] line = new String[7];
+		try {
+			CsvWriter writer = new CsvWriter(this.publisher_path);
+			//publisher is literally name then books, just rewrite the entire thing
+			writer.writeRecord(header);
+			for(Item item : items) {
+				line[0] = 
+				line[1] = String.join(" ", publisher.getBooks());
+				writer.writeRecord(line);
+			}
+			writer.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void createBorrowingMap(CsvReader reader) throws IOException {
+		while(reader.readRecord()) {
+			reader.get("bookid");
+			borrowMap.put(reader.get(reader.get("bookid")), new HashSet<>(Arrays.asList(reader.get("users").split(" "))));
+	    }
 	}
 
 	private TextBookEdition createTextBookEditionFromRecord(CsvReader reader) {
@@ -334,11 +343,13 @@ public class LibraryDataBase {
 			String id = reader.get("id");
 			String name = reader.get("name");
 			double price =Double.parseDouble(reader.get("price"));
-			Publisher publisher = getPublisher(reader.get("publisher"));
-			if(publisher.getName().compareTo("Unknown Publisher") == 0) {
+			Publisher publisher;
+			try {
+				publisher = getPublisher(reader.get("publisher"));
+			}catch(Exception e) {
 				publisher = new Publisher(reader.get("publisher"), Collections.emptySet());
-				addPublisher(publisher);
 			}
+			
 			String content = reader.get("content");
 			item = new ItemBuilder().buildId(id).buildName(name).buildPrice(price).buildPublisher(publisher).buildContent(content).buildType(type).build();
 			if(Boolean.parseBoolean(reader.get("enabled"))) {

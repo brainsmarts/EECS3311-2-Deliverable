@@ -66,6 +66,14 @@ public class HomePage extends JPanel{
         revalidate();
     }
 	
+	private void createHistoryList() {
+		
+	}
+	
+	private void createTextBookList() {
+		//get textbooks from uds
+	}
+	
 	private void createBorrowedList() {
 		 Map<LocalDate, Set<String>> userItems = user.getBooksBorrowed();
 	        JPanel listContainer = new JPanel();
@@ -235,7 +243,6 @@ public class HomePage extends JPanel{
 		return warning;	
 	}
 
-	
     private void openWebsite(String url) {
         try {
             Desktop.getDesktop().browse(new URI(url));

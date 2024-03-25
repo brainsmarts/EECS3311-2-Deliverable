@@ -54,14 +54,21 @@ public class RequestDataBase {
 	
 	public void approveRequest(Request request, String content) {
 		LibraryDataBase database = LibraryDataBase.getInstance();
-		Item item = new ItemBuilder()
-				.buildType(request.getItemType())
-				.buildId(request.getId())
-				.buildName(request.getName())
-				.buildPublisher(database.getPublisher(request.getPublisher()))
-				.buildContent(content)
-				.build();
-		LibraryDataBase.getInstance().addItem(item);
+		Item item;
+		try {
+			item = new ItemBuilder()
+					.buildType(request.getItemType())
+					.buildId(request.getId())
+					.buildName(request.getName())
+					.buildPublisher(database.getPublisher(request.getPublisher()))
+					.buildContent(content)
+					.build();
+			LibraryDataBase.getInstance().addItem(item);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		notifyUsers(request, "Your request for " + request.getName() + " has been approved");
 		removeRequestFromFile(request);
 	}

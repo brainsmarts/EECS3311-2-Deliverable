@@ -14,16 +14,23 @@ public class TextBookEdition {
 	String series;
 	Set<TextBook> editions;
 	Set<TextBookNotification> facultyNotifications;
+	Set<String> faculty;
 	
 	public TextBookEdition(String series) {
 		editions = new HashSet<>(); 
 		facultyNotifications = new HashSet<>();
+		faculty = new HashSet<>();
 	}
 
 	// if a textbook is added then yuh
 	public void addTextBook(TextBook book) {
 		editions.add(book);
 		notifyFaculty();
+	}
+	
+	public Set<String> getFaculty() {
+		return faculty;
+		
 	}
 	
 	public boolean isPartOfSeries(String id) {
@@ -59,6 +66,7 @@ public class TextBookEdition {
 	}
 
 	public void setFacultyNotifications(Set<String> facultyList) {
+		faculty = facultyList;
 		for(String username: facultyList) {
 			EmailNotification notification = new EmailNotification(UserDataBase.getInstance().getUser(username));
 			facultyNotifications.add(notification);

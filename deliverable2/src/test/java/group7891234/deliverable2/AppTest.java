@@ -76,7 +76,7 @@ public class AppTest
 		ldatabase.addItem(builder);
 		ldatabase.getItem("cheese#2");
 		ldatabase.getItem("cheese#4");
-		ldatabase.updateTextBookEditionsFile("cheese");
+		ldatabase.updateTextBookEditionsFile();
 		try {
 			
 		} catch (Exception e) {
