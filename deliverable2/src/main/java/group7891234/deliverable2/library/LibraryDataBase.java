@@ -110,86 +110,24 @@ public class LibraryDataBase {
 		return searchMethod.getSearchResults(search.substring(3));
 	}
 	
-	public void addTextbook(TextBook tb) {
-		for(TextBookEdition series: textbook_series) {
-			if(tb.getId().split("#")[0].compareTo(series.getSeries()) == 0){
-				series.addTextBook(tb);
-				return;
-			}
-		}
-		TextBookEdition newSeries = new TextBookEdition(tb.getId().split("#")[0]);
-		newSeries.addTextBook(tb);
-		textbook_series.add(newSeries);
-	}
-	
 	//do not use during initilization ONLY USE after
 	public void addItem(Item item) {
-		if(items.contains(item)) {
-			System.out.print("Already In DataBase");
-			return;
-		}
 		items.add(item);
-		List<String[]> lines = new ArrayList<>();
-		try {
-			CsvReader reader = new CsvReader(this.item_path);
-
-			while(reader.readRecord()) {
-				  lines.add(reader.getValues());
+		if(item.getType() == ItemType.TEXTBOOK) {
+			System.out.println("Is TextBook");
+			for(TextBookEdition edition: this.textbook_series) {
+				edition.isPartOfSeries((TextBook)item);
+				
 			}
-			
-			reader.close();
-			
-			CsvWriter writer = new CsvWriter(this.item_path);
-			
-			for(String[] string: lines) {
-				writer.writeRecord(string);
-			}
-			//type id name price enabled publisher content
-			writer.write(item.getType().toString());
-			writer.write(item.getId());
-			writer.write(item.getName());
-			writer.write(Double.toString(item.getPrice()));
-			writer.write(Boolean.toString(item.isEnabled()));
-			writer.write(item.getPublisher().getName());
-			writer.write(item.getContent());
-			
-			writer.close();
-		}catch(Exception e) {
-			
-		}
-		
-		if(item.getType() == ItemType.TEXTBOOK)
 			updateTextBookEditionsFile();
+		}
+		updateItemsFile();
 	}
 	
 	//do not use during initilization ONLY USE after
 	public void addPublisher(Publisher publisher) {
-		if(getPublishers().contains(publisher))
-			return;
-		getPublishers().add(publisher);
-		List<String[]> lines = new ArrayList<>();
-		try {
-			CsvReader reader = new CsvReader(this.publisher_path);
-
-			while(reader.readRecord()) {
-				  lines.add(reader.getValues());
-			}
-			
-			reader.close();
-			
-			CsvWriter writer = new CsvWriter(this.publisher_path);
-			
-			for(String[] string: lines) {
-				writer.writeRecord(string);
-			}
-			
-			writer.write(publisher.getName());
-			writer.write("");
-			
-			writer.close();
-		}catch(Exception e) {
-			
-		}
+		publishers.add(publisher);
+		updatePublisherFile();
 	}
 	
 	public Publisher createPublisher(String name) {
@@ -223,14 +161,35 @@ public class LibraryDataBase {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void updateBorrowingFile() {
+		//get publisher list and rewrites a specific Publisher
+		//first read all
+		String[] header = {"bookid", "users"};
+		String[] line = new String[2]; 
+ 		try {
+			CsvWriter writer = new CsvWriter(this.publisher_path);
+			//publisher is literally name then books, just rewrite the entire thing
+			writer.writeRecord(header);
+			for (Map.Entry<String, Set<String>> entry : borrowMap.entrySet()) {
+				line[0] = entry.getKey();
+				line[1] = String.join(" ", entry.getValue());
+				writer.writeRecord(line);
+			}
+			writer.close();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void updateTextBookEditionsFile() {
 		String[] header = {"series", "books","faculty"};
 		String[] line = new String[3]; 
 		String tempBooks = "";
 		String tempFaculty = "";
  		try {
-			CsvWriter writer = new CsvWriter(this.publisher_path);
+			CsvWriter writer = new CsvWriter(this.edition_path);
 			//publisher is literally name then books, just rewrite the entire thing
 			writer.writeRecord(header);
 			for(TextBookEdition series : this.textbook_series) {
@@ -294,16 +253,21 @@ public class LibraryDataBase {
 		//then editions
 	}
 
-	public void updateItemsFile(CsvReader reader) {
+	public void updateItemsFile() {
 		String[] header = {"type", "id","name","price","enabled","publisher","content"};
 		String[] line = new String[7];
 		try {
-			CsvWriter writer = new CsvWriter(this.publisher_path);
-			//publisher is literally name then books, just rewrite the entire thing
+			CsvWriter writer = new CsvWriter(this.item_path);
+			//type,id,name,price,enabled,publisher,content
 			writer.writeRecord(header);
 			for(Item item : items) {
-				line[0] = 
-				line[1] = String.join(" ", publisher.getBooks());
+				line[0] = item.getType().toString();
+				line[1] = item.getId();
+				line[2] = item.getName();
+				line[3] = Double.toString(item.getPrice());
+				line[4] = Boolean.toString(item.isEnabled());
+				line[5] = item.getPublisher().getName();
+				line[6] = item.getContent();
 				writer.writeRecord(line);
 			}
 			writer.close();

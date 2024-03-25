@@ -17,31 +17,29 @@ public class TextBookEdition {
 	Set<String> faculty;
 	
 	public TextBookEdition(String series) {
+		this.series = series;
 		editions = new HashSet<>(); 
 		facultyNotifications = new HashSet<>();
 		faculty = new HashSet<>();
 	}
 
 	// if a textbook is added then yuh
-	public void addTextBook(TextBook book) {
-		editions.add(book);
-		notifyFaculty();
-	}
-	
 	public Set<String> getFaculty() {
 		return faculty;
 		
 	}
 	
-	public boolean isPartOfSeries(String id) {
-		if (id.split("#")[0].compareTo(series) == 0) {
+	public boolean isPartOfSeries(TextBook book) {
+		System.out.println(book.getId().split("#")[0]);
+		System.out.println(series);
+		if (book.getId().split("#")[0].compareTo(series) == 0) {
 			try {
-				if(LibraryDataBase.getInstance().getItem(id).getType() == ItemType.TEXTBOOK) {
-					editions.add((TextBook) LibraryDataBase.getInstance().getItem(id));
-					notifyFaculty();
-				}
+				editions.add(book);
+				notifyFaculty();
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
+				e.printStackTrace();
 				return false;
 			}
 			return true;

@@ -31,11 +31,19 @@ public class AppTest
 	public void testLibrary() {
 		UserDataBase database = UserDataBase.getInstance();
 		LibraryDataBase ldatabase = LibraryDataBase.getInstance();
+		Item builder = new ItemBuilder()
+				.buildType(ItemType.TEXTBOOK)
+				.buildId("cheese#7")
+				.buildName("Cheening On The Meow")
+				.buildPublisher(ldatabase.createPublisher("RatMan"))
+				.buildContent("hehehehhehehehe")
+				.build();
+		ldatabase.addItem(builder);
 		/*
 		for(Item item : ldatabase.getItems()) {
 			System.out.println(item.getId());
 		}
-		*/
+		
 		/*
 		for(Publisher publisher: ldatabase.getPublishers()) {
 			System.out.println(publisher.getName());
