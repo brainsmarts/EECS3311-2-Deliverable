@@ -1,5 +1,4 @@
 itemType,name,id,publisher,requestType,users
-BOOK,The Great Cheese,tgceee,TheRatking,COURSE_TEACHING,brunni TaylorSwift
 NEWSLETTER,The Cheese Times,tcteee,TheRatking,SELF_IMPROVEMENT,brunni TaylorSwift
 ONLINEBOOK,Critter Books Interactive,cbinc,CrittersINC,COURSE_TEACHING,brunni TaylorSwift
 TEXTBOOK,The Cups around the world,tcatw#1,TheCupking,COURSE_TEACHING,brunni TaylorSwift
