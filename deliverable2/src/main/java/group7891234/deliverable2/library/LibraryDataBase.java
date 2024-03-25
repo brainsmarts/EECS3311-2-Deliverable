@@ -22,6 +22,7 @@ import group7891234.deliverable2.library.search.AuthorStrategy;
 import group7891234.deliverable2.library.search.Search;
 import group7891234.deliverable2.library.search.TitleStrategy;
 import group7891234.deliverable2.library.search.TypeStrategy;
+import group7891234.deliverable2.users.User;
 
 public class LibraryDataBase {
 	private String 
@@ -37,6 +38,7 @@ public class LibraryDataBase {
 	//name, books, faculty to notice
 	List<TextBookEdition> textbook_series;
 	private Map<String, Set<String>> borrowMap;
+	private final int numOfPhysicalItems = 20;
 	
 	private static LibraryDataBase instance; 
 	
@@ -66,6 +68,23 @@ public class LibraryDataBase {
 		return instance;
 	}
 
+	public Item borrow(User user, String itemName) {
+		Item item = null;
+		try{
+			//check if book exists in borrow map
+			if(borrowMap.containsKey(itemName)) {
+				//check if theres enough to go around
+				if(borrowMap.get(itemName).size() < numOfPhysicalItems) {
+					borrowMap.get(itemName).add(user.getUserName());
+					return getItem(itemName);
+				}
+				//if so then return book and add user to map otherwise throw error ig :|
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		throw new NullPointerException(itemName + " could not be found");
+	}
 	//provides a new set of items but not the actual items of the library base to prevent manipulation from outside of the library class.
 	public Set<Item> getItems(){
 		HashSet<Item> clone = new HashSet<Item>();
@@ -73,17 +92,13 @@ public class LibraryDataBase {
 		return clone;
 	}
 	
-	public Item getItem(String id) throws Exception {
-		if(itemLookUp == null) {
-			itemLookUp = new HashMap<>();
-	        for (Item item : items) {
-	            itemLookUp.put(item.getId(), item);
-	        }
-		}
-		Item item = itemLookUp.get(id);
-	    if (item != null) 
-	        return item;
-		
+	private Item getItem(String id) throws Exception {
+        for (Item item : items) {
+            if(item.getId().compareTo(id) == 0) {
+            	return item;
+            }
+        }
+
 		throw new IllegalArgumentException("Item with ID " + id + " not found");
 	}
 	
