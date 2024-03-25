@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -26,7 +27,7 @@ public abstract class User {
 	private Map<LocalDate, Set<String>> booksBorrowed;
 	private Map<LocalDate, Set<String>> itemsRented;
 	private List<String> subscribed;
-	private int lostBookCount = 0;
+	private int lostBookCount;
 	private final int max_lost = 3;
 	
 	protected User(String username, String password, String email){
@@ -35,6 +36,8 @@ public abstract class User {
 		this.email = email;
 		booksBorrowed = new HashMap<>();
 		itemsRented = new HashMap<>();
+		subscribed = new ArrayList<>();
+		lostBookCount = 0;
 	}
 	
 	public String getUserName() {
@@ -70,7 +73,7 @@ public abstract class User {
 	}
 	
  	protected boolean CorrectLogin(String username, String password) {
-		return (username.compareTo(this.username) == 0 && password.compareTo(this.password) == 0);
+		return (username.compareTo(this.username) == 0 && password.compareTo(this.getPassword()) == 0);
 	}
 	
 	public void Subscribe(NewsLetter newsletter) {
@@ -88,12 +91,10 @@ public abstract class User {
 		
 		LocalDate dueDate = LocalDate.now().plusMonths(1);
 		if(numOfItems() < 10) {
-			booksBorrowed.computeIfAbsent(dueDate, k -> new HashSet<>());
-			booksBorrowed.get(dueDate).add(
-					LibraryDataBase.getInstance().borrow(this, book).getId());
+			booksBorrowed.computeIfAbsent(dueDate, k -> new HashSet<>()).add(LibraryDataBase.getInstance().borrow(this, book).getId());
 		}  
 	}
-	
+	                                      
 	public double getOverDuePayment() {
 		double amountOwed = 0;
 		for(LocalDate dueDate: booksBorrowed.keySet()) {
@@ -103,25 +104,10 @@ public abstract class User {
 		}
 		return amountOwed;
 	}
-
-	public boolean addItem(Item item) {
-		//if date already exists, then simply add to the list
-		if(numOfItems() >= 10) {
-			return false;
-		}
-		LocalDate currentDate = LocalDate.now();
-		if(booksBorrowed.get(currentDate) == null) {
-			booksBorrowed.put(currentDate,new HashSet<>());
-		}
-		
-		booksBorrowed.get(currentDate).add(item.getId());
-        
-        return true;
-	}
 	
 	private int numOfItems() {
 		int counter = 0;
-		for(Set<String> set: itemsRented.values()) {
+		for(Set<String> set: booksBorrowed.values()) {
 			counter += set.size();
 		}
 		return counter;
@@ -153,4 +139,16 @@ public abstract class User {
 	public void setSubscribed(Set<String> set) {
 		this.subscribed = new ArrayList<>(set);
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public  Set<String> getCourses(){
+		return Collections.emptySet();
+	}
+	public Set<String> getTBhistory(){
+		return Collections.emptySet();
+	}
+
 }

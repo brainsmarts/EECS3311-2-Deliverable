@@ -126,8 +126,13 @@ public class ViewItemPanel extends JPanel implements ItemVisitor{
 
 	@Override
 	public void visitBook(Book book) {
+		if(book.getPrice() != 0) {
+			suddenlyPAYMENT(book);
+			return;
+		}
 		if(user.getBooksBorrowedList().contains(book)) {
 			add.setText("Already Borrowing/Rented");
+			add.revalidate();
 			return;
 		}
 		add.setText("Borrow");
@@ -135,11 +140,15 @@ public class ViewItemPanel extends JPanel implements ItemVisitor{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!user.addItem(book)) {
-					JOptionPane.showMessageDialog(null, "At Borrow Limit", "Popup", JOptionPane.INFORMATION_MESSAGE);
-					add.setText("Borrowed");
-					revalidate();
+				try{
+					user.borrow(book.getId());
+					add.setText("Already Borrowing/Rented");
+					add.removeActionListener(this);
+					add.revalidate();
+				}catch(Exception t) {
+					t.printStackTrace();
 				}
+				
 			}
 			
 		});
@@ -175,8 +184,13 @@ public class ViewItemPanel extends JPanel implements ItemVisitor{
 	@Override
 	public void visitTextBook(TextBook book) {
 		// TODO Auto-generated method stub
+		if(book.getPrice() != 0) {
+			suddenlyPAYMENT(book);
+			return;
+		}
 		if(user.getBooksBorrowedList().contains(book)) {
 			add.setText("Already Borrowing/Rented");
+			add.revalidate();
 			return;
 		}
 		add.setText("Borrow");
@@ -184,14 +198,30 @@ public class ViewItemPanel extends JPanel implements ItemVisitor{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!user.addItem(book)) {
-					JOptionPane.showMessageDialog(null, "At Borrow Limit", "Popup", JOptionPane.INFORMATION_MESSAGE);
+				try{
+					user.borrow(book.getId());
+					add.setText("Already Borrowing/Rented");
+					add.removeActionListener(this);
+					add.revalidate();
+				}catch(Exception t) {
+					t.printStackTrace();
 				}
-				add.setText("Borrowed");
-				revalidate();
+			}
+		});
+		add.revalidate();
+	}
+
+	public void suddenlyPAYMENT(Item item) {
+		add.setText("BUY");
+		add.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				MainUI.getInstance().changeCheckoutPage(item);
 			}
 			
 		});
-		revalidate();
+		add.revalidate();
 	}
 }

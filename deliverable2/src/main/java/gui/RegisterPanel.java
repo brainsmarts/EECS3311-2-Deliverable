@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
@@ -66,7 +67,7 @@ public class RegisterPanel extends JPanel{
 	            	String email = emailField.getText();
 	            	String username = usernameField.getText();
 	                String password = new String(passwordField.getPassword());
-	                String type = optionsList.getSelectedItem().toString();
+	                String type = optionsList.getSelectedItem().toString(); 
 
 	                // You can perform login authentication here
 	                // For simplicity, let's just display a message
@@ -75,7 +76,7 @@ public class RegisterPanel extends JPanel{
 	            	   MainUI.getInstance().logOut();
 	            	   
 	               }catch(Exception exception) {
-	            	   
+	            	   JOptionPane.showMessageDialog(null, exception.getMessage());
 	               }
 	              
 	            }

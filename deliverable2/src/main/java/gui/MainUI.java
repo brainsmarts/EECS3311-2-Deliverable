@@ -25,6 +25,8 @@ public class MainUI extends JFrame{
 	private ViewContentPanel contentPanel;
 	private RequestPanel requestPanel;
 	private RequestManagerPanel requestManager;
+	private UserManagerPanel userManager;
+	private ItemManagerPanel itemManager;
 	
 	public static void main(String[] args) {
 		JFrame frame = MainUI.getInstance();
@@ -64,20 +66,41 @@ public class MainUI extends JFrame{
 		this.setContentPane(homepagePanel);
 		revalidate();
 	}
+	protected void changeRequestManagePage() {
+		if(this.requestManager == null) {
+			requestManager = new RequestManagerPanel((Manager)user);
+		}
+		this.setContentPane(requestManager);
+		revalidate();
+	}
 	
+	protected void changeUserRequestManagePage() {
+		if(this.userManager == null) {
+			userManager  = new UserManagerPanel((Manager)user);
+		}
+		this.setContentPane(userManager);
+		revalidate();
+	}
+	
+	protected void changeItemManagePage() {
+		if(this.itemManager == null) {
+			itemManager  = new ItemManagerPanel((Manager)user);
+		}
+		this.setContentPane(itemManager);
+		revalidate();
+	}
+
+	protected void changeCheckoutPage(Item item) {
+		this.setContentPane(new CheckoutPanel(item));
+		revalidate();
+	}
 	protected void changeRequestPage() {
 		if(requestPanel == null) {
 			requestPanel = new RequestPanel();
 			
 		}
 		
-		if(user.getType() == UserType.MANAGER) {
-			requestManager = new RequestManagerPanel((Manager)user);
-			this.setContentPane(requestManager);
-		} else {
-			this.setContentPane(requestPanel);
-		}
-		
+		this.setContentPane(requestPanel);
 		revalidate();
 	}
 	

@@ -31,6 +31,9 @@ import group7891234.deliverable2.library.LibraryDataBase;
 import group7891234.deliverable2.library.item.Item;
 import group7891234.deliverable2.library.item.NewsLetter;
 import group7891234.deliverable2.users.User;
+import group7891234.deliverable2.users.factory.Faculty;
+import group7891234.deliverable2.users.factory.Students;
+import group7891234.deliverable2.users.factory.UserType;
 
 public class HomePage extends JPanel{
 	/*
@@ -48,14 +51,23 @@ public class HomePage extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private LibraryDataBase database = LibraryDataBase.getInstance();
 	private User user;
+	private JLabel owed;
 
 	public HomePage(User user) {
-        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.user = user;
+        owed = new JLabel();
+        if(user.getOverDuePayment() == 0)
+        	owed.setVisible(false);
+        else {
+        	owed.setText("You now owe $" + user.getOverDuePayment() + " in late fees");
+        }
+      
 
         // Create and add search bar
         createSearchBar();
-
+        UserSpecifics();
+        this.add(owed);
         // Create and add book list
         createBorrowedList();
        
@@ -67,11 +79,85 @@ public class HomePage extends JPanel{
     }
 	
 	private void createHistoryList() {
-		
-	}
-	
+		JPanel historyPanel = new JPanel();
+		Set<String> history = user.getTBhistory();
+		historyPanel.add(new JLabel("Previously Viewed"));
+		for(String string: history) {
+			historyPanel.add(new JLabel(string));
+		}
+		add(historyPanel);
+	}	
+
 	private void createTextBookList() {
 		//get textbooks from uds
+		JPanel textbookPanel = new JPanel();
+		Set<String> courses = user.getCourses();
+		for(String string: courses) {
+			JPanel coursePanel = new JPanel();
+			coursePanel.setLayout(new GridLayout(2,1));
+			JLabel courseLabel = new JLabel(string);
+			JButton onlineButton = new JButton(string + "TextBook");
+			try {
+				Item item = LibraryDataBase.getInstance().getSeriesOnlineBook(string);
+				System.out.println(item.getId());
+				onlineButton.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						MainUI.getInstance().changeContentPanel(item);
+					}
+					
+				});
+			}catch(Exception e) {
+				onlineButton.setText("Online TextBook Not Found");
+			}
+			coursePanel.add(courseLabel);
+			coursePanel.add(onlineButton);
+			textbookPanel.add(coursePanel);
+			coursePanel.revalidate();
+		}
+		textbookPanel.add(new JLabel("TextBooks"));
+		
+		textbookPanel.revalidate();
+		
+		add(textbookPanel);
+	}
+	
+
+	private void createManagementPanel() {
+		JPanel managerPanel = new JPanel();
+		JButton itemRequest = new JButton("Item Requests");
+		JButton itemManage = new JButton("Manage Items");
+		JButton manageUsers = new JButton("Manage Users");
+		managerPanel.add(itemRequest);
+		managerPanel.add(itemManage);
+		managerPanel.add(manageUsers);
+		managerPanel.revalidate();
+		add(managerPanel);
+		
+		itemRequest.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainUI.getInstance().changeRequestManagePage();
+			}
+		});
+		itemManage.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainUI.getInstance().changeItemManagePage();;
+			}
+		});
+		manageUsers.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainUI.getInstance().changeUserRequestManagePage();;
+			}
+		});
+		//manage item requests
+		
+		//manage items
+		//manage user request
 	}
 	
 	private void createBorrowedList() {
@@ -129,7 +215,6 @@ public class HomePage extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				try {
-					
 					MainUI.getInstance().changeSearchResult(database.search(searchField.getText()));
 				}catch(Exception e1) {
 					
@@ -227,9 +312,9 @@ public class HomePage extends JPanel{
 	
 	private JLabel getWarning(LocalDate date) {
 		JLabel warning = new JLabel("Label"); 
-		long days = date.until(LocalDate.now(), ChronoUnit.DAYS);
+		long days = LocalDate.now().until(date, ChronoUnit.DAYS);
+		System.out.println(days);
 		if(date.isBefore(LocalDate.now()))
-			days *= -1;
 		if(days < 5) {
 			if(days >= 0) {
 				warning.setText("You have " + days + " days left to return your book");
@@ -252,8 +337,24 @@ public class HomePage extends JPanel{
     }
     
     private void UserSpecifics() {
+    	UserType type = user.getType();
+    	switch(type) {
+    		case MANAGER :
+    			createManagementPanel();
+    			break;
+    		case STUDENT:
+    			System.out.println("Student Located");
+    			createTextBookList();
+    			break;
+    		case FACULTY:
+    			createTextBookList();
+    			createHistoryList();
+    			break;
+    		default:
+    	}
     	//if student add course specific textbooks
     	//if faculty add textbookhistory too
     	//if manager add manage requests button
+    	
     }
 }

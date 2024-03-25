@@ -11,8 +11,10 @@ import group7891234.deliverable2.users.UserDataBase;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -56,11 +58,17 @@ public class RequestDataBase {
 		LibraryDataBase database = LibraryDataBase.getInstance();
 		Item item;
 		try {
+			Publisher publisher;
+			try {
+				publisher = database.getPublisher(request.getPublisher());
+			}catch(Exception e) {
+				publisher = new Publisher(request.getPublisher(),new HashSet<>());
+			}
 			item = new ItemBuilder()
 					.buildType(request.getItemType())
 					.buildId(request.getId())
 					.buildName(request.getName())
-					.buildPublisher(database.getPublisher(request.getPublisher()))
+					.buildPublisher(publisher)
 					.buildContent(content)
 					.build();
 			LibraryDataBase.getInstance().addItem(item);
@@ -149,7 +157,7 @@ public class RequestDataBase {
 	
 	public void addRequest(ItemType itemType, String id,String name, String publisher,  RequestType type, String[] users ) {
 		Request request = new Request(itemType, id, name, publisher, type);
-		requests.put(request, new ArrayList<String>());
+		requests.put(request, Arrays.asList(users));
 	}
 		
 	public String getPriority() {

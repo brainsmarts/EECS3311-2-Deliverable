@@ -9,9 +9,21 @@ public class Publisher {
 	private Set<String> books_published;
 	private String name;
 	
-	Publisher(String name, Set<String> books_published){
+	public Publisher(String name, Set<String> books_published){
 		this.name = name;
 		this.books_published = books_published;
+	}
+	
+	public void populate() {
+		for(Item item: LibraryDataBase.getInstance().getItems()) {
+			if(item.getPublisher().getName().compareTo(name) == 0) {
+				books_published.add(name);
+			}
+		}
+	}
+	
+	public void addBook(String bookID) {
+		books_published.add(bookID);
 	}
 	
 	public String getName() {
@@ -23,7 +35,19 @@ public class Publisher {
 	}
 	
 	public void grantPermission(boolean grant) {
-		//what
+	}
+	
+	public void grantDiscount(double percent) {
+		for(String name : books_published) {
+			try {
+				Item item = LibraryDataBase.getInstance().getItem(name);
+				double newPrice = percent * item.getPrice();
+				item.setPrice(newPrice);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	@Override

@@ -7,6 +7,7 @@ public class Non_Faculty extends User{
 	public Non_Faculty(String username, String password, String email) {
 		super(username, password, email);
 		// TODO Auto-generated constructor stub
+		type = UserType.NON_FACULTY;
 	}
 
 }

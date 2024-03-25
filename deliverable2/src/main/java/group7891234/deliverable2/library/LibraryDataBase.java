@@ -32,7 +32,6 @@ public class LibraryDataBase {
 			borrowing_path = "src/main/resources/library_borrowing.csv";
 	//type, id, name, enabled, publisher, content
 	private Set<Item> items;
-	private Map<String, Item> itemLookUp;
 	//name, books
 	private Set<Publisher> publishers;
 	//name, books, faculty to notice
@@ -77,9 +76,13 @@ public class LibraryDataBase {
 				if(borrowMap.get(itemName).size() < numOfPhysicalItems) {
 					borrowMap.get(itemName).add(user.getUserName());
 					return getItem(itemName);
+				} else {
+					throw new IllegalArgumentException("No More to rent/borrow");
 				}
 				//if so then return book and add user to map otherwise throw error ig :|
 			}
+			borrowMap.computeIfAbsent(itemName, k -> new HashSet<>()).add(user.getUserName());
+			return getItem(itemName);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -92,7 +95,7 @@ public class LibraryDataBase {
 		return clone;
 	}
 	
-	private Item getItem(String id) throws Exception {
+	public Item getItem(String id) throws Exception {
         for (Item item : items) {
             if(item.getId().compareTo(id) == 0) {
             	return item;
@@ -103,8 +106,8 @@ public class LibraryDataBase {
 	}
 	
 	public Publisher getPublisher (String name) throws Exception {
-		for(Publisher publisher: getPublishers()) {
-			if(publisher.getName().compareToIgnoreCase(name) == 0) {
+		for(Publisher publisher: publishers) {
+			if(publisher.getName().compareToIgnoreCase(name) == 0) {	
 				return publisher;
 			}
 		}
@@ -117,7 +120,6 @@ public class LibraryDataBase {
 		searchMethod.setStrategy(new TitleStrategy());
 		String command = search.substring(0, 2);
 		if(command.compareTo("/p") == 0) {
-			System.out.println("Author Strategy");
 			searchMethod.setStrategy(new AuthorStrategy());
 		}else if(command.compareTo("/t") == 0) {
 			searchMethod.setStrategy(new TypeStrategy());
@@ -128,11 +130,18 @@ public class LibraryDataBase {
 	//do not use during initilization ONLY USE after
 	public void addItem(Item item) {
 		items.add(item);
+		
 		if(item.getType() == ItemType.TEXTBOOK) {
-			System.out.println("Is TextBook");
+			boolean editionExists = false;
 			for(TextBookEdition edition: this.textbook_series) {
-				edition.isPartOfSeries((TextBook)item);
-				
+				editionExists = edition.isPartOfSeries((TextBook)item);
+				break;
+			}
+			
+			if(!editionExists) {
+				TextBookEdition new_series = new TextBookEdition(item.getId().split("#")[0],"");
+				new_series.isPartOfSeries((TextBook)item);
+				this.textbook_series.add(new_series);
 			}
 			updateTextBookEditionsFile();
 		}
@@ -143,12 +152,6 @@ public class LibraryDataBase {
 	public void addPublisher(Publisher publisher) {
 		publishers.add(publisher);
 		updatePublisherFile();
-	}
-	
-	public Publisher createPublisher(String name) {
-		Publisher publisher = new Publisher(name, Collections.emptySet());
-		addPublisher(publisher);
-		return publisher;
 	}
 
 	public void updateFile() {
@@ -199,21 +202,24 @@ public class LibraryDataBase {
 	}
 	
 	public void updateTextBookEditionsFile() {
-		String[] header = {"series", "books","faculty"};
-		String[] line = new String[3]; 
-		String tempBooks = "";
-		String tempFaculty = "";
+		String[] header = {"series","online", "books","faculty"};
+		String[] line = new String[4]; 
+		
  		try {
+ 			
 			CsvWriter writer = new CsvWriter(this.edition_path);
 			//publisher is literally name then books, just rewrite the entire thing
 			writer.writeRecord(header);
 			for(TextBookEdition series : this.textbook_series) {
+				String tempBooks = "";
+				String tempFaculty = "";
+				System.out.println(series.getSeries() + " Updating file info");
 				line[0] = series.getSeries();
+				line[1] = series.getOnlineBook();
 				for(TextBook book:series.getEditions())
 					tempBooks += book.getId() + " ";
-				line[1] = tempBooks;
-				
-				line[2] = String.join(" ",series.getFaculty());
+				line[2] = tempBooks;
+				line[3] = String.join(" ",series.getFaculty());
 				writer.writeRecord(line);
 			}
 			writer.close();
@@ -255,7 +261,7 @@ public class LibraryDataBase {
 		    
 		    reader = new CsvReader(borrowing_path);
 		    reader.readHeaders();
-		    
+		    	
 		    createBorrowingMap(reader);
 		  }catch(Exception e) {
 			  e.printStackTrace();
@@ -301,16 +307,21 @@ public class LibraryDataBase {
 	private TextBookEdition createTextBookEditionFromRecord(CsvReader reader) {
 		TextBookEdition series = null;
 		try {
-			series = new TextBookEdition(reader.get("series"));
+			series = new TextBookEdition(reader.get("series"), reader.get("online"));
 			String[] test = reader.get("books").split(" ");
 			Set<TextBook> list = new HashSet<>();
 			for(String string : test) {
-				list.add((TextBook) getItem(string));
+				try {
+					list.add((TextBook) getItem(string));
+				}catch(Exception e){
+					
+				}
+				
 			}
 			series.setEditions(list);
 			series.setFacultyNotifications(new HashSet<String>(Arrays.asList(reader.get("faculty").split(" "))));
 		}catch(Exception e) {
-			
+			e.printStackTrace();
 		}
 		return series;
 	}
@@ -326,8 +337,10 @@ public class LibraryDataBase {
 			try {
 				publisher = getPublisher(reader.get("publisher"));
 			}catch(Exception e) {
-				publisher = new Publisher(reader.get("publisher"), Collections.emptySet());
+				publisher = new Publisher(reader.get("publisher"), new HashSet<>());
+				publishers.add(publisher);
 			}
+			publisher.addBook(id);
 			
 			String content = reader.get("content");
 			item = new ItemBuilder().buildId(id).buildName(name).buildPrice(price).buildPublisher(publisher).buildContent(content).buildType(type).build();
@@ -362,5 +375,29 @@ public class LibraryDataBase {
 
 	public Set<Publisher> getPublishers() {
 		return publishers;
+	}
+
+	public void addFacultyToTextbookEditions(String item, String user) {
+		//find textbook edition
+		for(TextBookEdition edition: this.textbook_series) {
+			if(edition.getSeries().compareTo(item.split("#")[0]) == 0) {
+				edition.addFaculty(user);
+				break;
+			}
+		}
+		updateTextBookEditionsFile();
+	}
+
+	public Item getSeriesOnlineBook(String series) {
+		for(TextBookEdition editions : this.textbook_series) {
+			if(editions.getSeries().compareTo(series) == 0) {
+				try {
+					return getItem(editions.getOnlineBook());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+				}
+			}
+		}
+		throw new IllegalArgumentException("OnlineBook Not Found");
 	}
 }
