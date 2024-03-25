@@ -1,5 +1,2 @@
 username,password,email,type
-zombie,pass3,zombie@example.com,FACULTY
-mummy,pass4,mummy@example.com,STUDENT
-ghost,pass5,ghost@example.com,NON_FACULTY
 witch,pass6,witch@example.com,FACULTY

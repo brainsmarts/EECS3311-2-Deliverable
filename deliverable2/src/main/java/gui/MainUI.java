@@ -83,10 +83,7 @@ public class MainUI extends JFrame{
 	}
 	
 	protected void changeItemManagePage() {
-		if(this.itemManager == null) {
-			itemManager  = new ItemManagerPanel((Manager)user);
-		}
-		this.setContentPane(itemManager);
+		this.setContentPane( new ItemManagerPanel((Manager)user));
 		revalidate();
 	}
 
@@ -95,12 +92,8 @@ public class MainUI extends JFrame{
 		revalidate();
 	}
 	protected void changeRequestPage() {
-		if(requestPanel == null) {
-			requestPanel = new RequestPanel();
-			
-		}
 		
-		this.setContentPane(requestPanel);
+		this.setContentPane(new RequestPanel());
 		revalidate();
 	}
 	

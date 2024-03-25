@@ -1,5 +1,5 @@
 username,password,email,type,borrowing,renting,subscribed,lostBookCount,courses,tbHistory
-brunni,hehehaha,brunni@gmail.com,STUDENT,2024-02-23 cheese#4 2023-02-23 rateconomy#6 cheese#2 rateconomy#5 cheese#4 2023-02-23 rateconomy#6 cheese#2 rateconomy#5,2024-02-23,times reut,5,cheese lotion231,
+brunni,hehehaha,brunni@gmail.com,STUDENT,2024-02-23 cheese#4 2023-02-23 rateconomy#6 cheese#2 rateconomy#5 cheese#4 2023-02-23 rateconomy#6 cheese#2 rateconomy#5,2024-02-23,times reut,5,lotion231 cheese,
 TaylorSwift,tay,tayswifty@email.com,FACULTY,2024-04-25 cheese#7 cheese#7,2024-04-25,,0,lotion231,lotion231
 beidouyuri,ilovelesbian,beidou@gmail.com,STUDENT,,,,0,,
 manager,admin,themanager@gmail.com,MANAGER,,,,0,,
@@ -10,3 +10,5 @@ TaylorSwift,tay,tayswifty@email.com,FACULTY,,,,0,,
 HomerTime,asdfmovie10*,HomerSimpson@gmail.com,VISITOR,,,,0,,
 ghost,pass5,ghost@example.com,NON_FACULTY,,,,0,,
 vampire,pass2,vampire@example.com,NON_FACULTY,,,,0,,
+zombie,pass3,zombie@example.com,FACULTY,,,,0,,
+ghost,pass5,ghost@example.com,NON_FACULTY,,,,0,,
