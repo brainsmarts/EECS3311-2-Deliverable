@@ -74,7 +74,7 @@ public class LibraryDataBase {
 			//check if book exists in borrow map
 			if(borrowMap.containsKey(itemName)) {
 				//check if theres enough to go around
-				if(borrowMap.get(itemName).size() < numOfPhysicalItems) {
+				if(borrowMap.get(itemName).size() < numOfPhysicalItems && user.getBooksBorrowedList().size() < 9) {
 					borrowMap.get(itemName).add(user.getUserName());
 					return getItem(itemName);
 				}
