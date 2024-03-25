@@ -3,6 +3,7 @@ package group7891234.deliverable2.users;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -11,6 +12,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import group7891234.deliverable2.library.LibraryDataBase;
 import group7891234.deliverable2.library.item.Book;
 import group7891234.deliverable2.library.item.Item;
 import group7891234.deliverable2.library.item.NewsLetter;
@@ -25,6 +27,7 @@ public abstract class User {
 	private Map<LocalDate, Set<String>> itemsRented;
 	private List<String> subscribed;
 	private int lostBookCount = 0;
+	private final int max_lost = 3;
 	
 	protected User(String username, String password, String email){
 		this.username = username; 
@@ -78,12 +81,29 @@ public abstract class User {
 		subscribed.remove(newsletter.getId());
 	}
 	
-	public void borrow(Book book) {
+	public void borrow(String book) {
 		//if date already exists, then simply add to the list
-		LocalDate currentDate = LocalDate.now();
-        booksBorrowed.computeIfAbsent(currentDate, k -> new HashSet<>()).add(book.getId());
+		if(lostBookCount >= max_lost) 
+			return;
+		
+		LocalDate dueDate = LocalDate.now().plusMonths(1);
+		if(numOfItems() < 10) {
+			booksBorrowed.computeIfAbsent(dueDate, k -> new HashSet<>());
+			booksBorrowed.get(dueDate).add(
+					LibraryDataBase.getInstance().borrow(this, book).getId());
+		}  
 	}
 	
+	public double getOverDuePayment() {
+		double amountOwed = 0;
+		for(LocalDate dueDate: booksBorrowed.keySet()) {
+			if(dueDate.isBefore(LocalDate.now())) {
+				amountOwed += 0.05 * dueDate.until(LocalDate.now(), ChronoUnit.DAYS);
+			}
+		}
+		return amountOwed;
+	}
+
 	public boolean addItem(Item item) {
 		//if date already exists, then simply add to the list
 		if(numOfItems() >= 10) {
@@ -113,6 +133,13 @@ public abstract class User {
 	
 	protected void setBorrowed(Map<LocalDate, Set<String>> borrowed) {
 		this.booksBorrowed = borrowed;
+		for(LocalDate dueDate: booksBorrowed.keySet()) {
+			if(dueDate.isBefore(LocalDate.now())) {
+				if(dueDate.until(LocalDate.now(), ChronoUnit.DAYS) >= 15) {
+					lostBookCount += booksBorrowed.get(dueDate).size();
+				}
+			}
+		}
 	}
 	
 	protected void setRenting(Map<LocalDate, Set<String>> renting) {

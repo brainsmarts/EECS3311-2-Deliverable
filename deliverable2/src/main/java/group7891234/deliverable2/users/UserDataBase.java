@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 
+import group7891234.deliverable2.users.factory.Manager;
 import group7891234.deliverable2.users.factory.UserFactory;
 import group7891234.deliverable2.users.factory.UserType;
 
@@ -21,7 +22,9 @@ import com.csvreader.*;
 public class UserDataBase {
 	private static UserDataBase instance;
 	private List<User> users;
+	private List<String[]> users_to_approve;
 	String path = "src/main/resources/users.csv";
+	String approve_path = "src/main/resources/approve_user.csv";
 	
 	private UserDataBase() {
 		users = new ArrayList<>();
@@ -111,12 +114,21 @@ public class UserDataBase {
 	public void registerNewUser(String username, String password, String email, UserType type) {
 		if(username.isEmpty() || password.isEmpty() || email.isEmpty())
 			throw new IllegalArgumentException("One Of The Fields is Empty");
+		
+		checkPasswordStrength(password);
 		User user = UserFactory.getUser(username, password, email, type);	
 		users.add(user);
 		user.setBorrowed(Collections.emptyMap());
 		user.setRenting(Collections.emptyMap());
-		user.setSubscribed(Collections.emptySet());
-		addUserToCSV(username, password, email, type);
+		user.setSubscribed(Collections.emptySet()); 
+		if(type != UserType.STUDENT && type != UserType.FACULTY)
+			addUserToCSV(username, password, email, type);
+	}
+	
+	public void approveUser(String username, Manager manager) {
+		//find in list
+		//add to users list
+		//add to csv
 	}
 	
 	public void addUserToCSV(String username, String password, String email, UserType type) {
@@ -201,4 +213,29 @@ public class UserDataBase {
 	public void updateFileData() {
 		
 	}
+	
+    public static void checkPasswordStrength(String password) throws IllegalArgumentException {
+        // Check if the password meets the criteria for being strong enough
+        if (password.length() < 8 || !containsUpperCase(password) || !containsLowerCase(password) || !containsDigit(password)) {
+            // Throw an IllegalArgumentException if the password is not strong enough
+            throw new IllegalArgumentException("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.");
+        }
+    }
+
+    private static boolean containsUpperCase(String password) {
+        return !password.equals(password.toLowerCase());
+    }
+
+    private static boolean containsLowerCase(String password) {
+        return !password.equals(password.toUpperCase());
+    }
+
+    private static boolean containsDigit(String password) {
+        for (char c : password.toCharArray()) {
+            if (Character.isDigit(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
