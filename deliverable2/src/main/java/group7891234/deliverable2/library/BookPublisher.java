@@ -58,4 +58,4 @@ public class Publisher {
         return (publisher.getName().compareTo(name) == 0);
 		
 	}
-}
+} // praise be to allah 
