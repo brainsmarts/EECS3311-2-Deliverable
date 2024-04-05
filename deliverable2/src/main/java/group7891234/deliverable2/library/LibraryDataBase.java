@@ -33,7 +33,7 @@ public class LibraryDataBase {
 	//type, id, name, enabled, publisher, content
 	private Set<Item> items;
 	//name, books
-	private Set<Publisher> publishers;
+	private Set<BookPublisher> publishers;
 	//name, books, faculty to notice
 	List<TextBookEdition> textbook_series;
 	private Map<String, Set<String>> borrowMap;
@@ -45,7 +45,7 @@ public class LibraryDataBase {
 		//populate items, publishers, and textbook series with the exel/cvs
 		
 		items = new HashSet<Item>();
-		publishers = new HashSet<Publisher>();
+		publishers = new HashSet<BookPublisher>();
 		textbook_series = new ArrayList<TextBookEdition>();
 		borrowMap = new HashMap<>(); 
 		try {
@@ -105,8 +105,8 @@ public class LibraryDataBase {
 		throw new IllegalArgumentException("Item with ID " + id + " not found");
 	}
 	
-	public Publisher getPublisher (String name) throws Exception {
-		for(Publisher publisher: publishers) {
+	public BookPublisher getPublisher (String name) throws Exception {
+		for(BookPublisher publisher: publishers) {
 			if(publisher.getName().compareToIgnoreCase(name) == 0) {	
 				return publisher;
 			}
@@ -149,7 +149,7 @@ public class LibraryDataBase {
 	}
 	
 	//do not use during initilization ONLY USE after
-	public void addPublisher(Publisher publisher) {
+	public void addPublisher(BookPublisher publisher) {
 		publishers.add(publisher);
 		updatePublisherFile();
 	}
@@ -168,7 +168,7 @@ public class LibraryDataBase {
 			CsvWriter writer = new CsvWriter(this.publisher_path);
 			//publisher is literally name then books, just rewrite the entire thing
 			writer.writeRecord(header);
-			for(Publisher publisher: publishers) {
+			for(BookPublisher publisher: publishers) {
 				line[0] = publisher.getName();
 				line[1] = String.join(" ", publisher.getBooks());
 				writer.writeRecord(line);
@@ -236,7 +236,7 @@ public class LibraryDataBase {
 		    reader.readHeaders();
 
 		    while (reader.readRecord()) {
-		      Publisher publisher = createPublisherFromRecord(reader);
+		      BookPublisher publisher = createPublisherFromRecord(reader);
 		      publishers.add(publisher);
 		    }
 		    reader.close();
@@ -333,11 +333,11 @@ public class LibraryDataBase {
 			String id = reader.get("id");
 			String name = reader.get("name");
 			double price =Double.parseDouble(reader.get("price"));
-			Publisher publisher;
+			BookPublisher publisher;
 			try {
 				publisher = getPublisher(reader.get("publisher"));
 			}catch(Exception e) {
-				publisher = new Publisher(reader.get("publisher"), new HashSet<>());
+				publisher = new BookPublisher(reader.get("publisher"), new HashSet<>());
 				publishers.add(publisher);
 			}
 			publisher.addBook(id);
@@ -359,11 +359,11 @@ public class LibraryDataBase {
 		return item;
 	}
 
-	private Publisher createPublisherFromRecord(CsvReader reader) {
+	private BookPublisher createPublisherFromRecord(CsvReader reader) {
 		// TODO Auto-generated method stub
-		Publisher publisher = null;
+		BookPublisher publisher = null;
 		try {
-			publisher = new Publisher(reader.get("name"), new HashSet<>(Arrays.asList(reader.get("books").split(" "))));	
+			publisher = new BookPublisher(reader.get("name"), new HashSet<>(Arrays.asList(reader.get("books").split(" "))));	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -373,7 +373,7 @@ public class LibraryDataBase {
 		return publisher;
 	}
 
-	public Set<Publisher> getPublishers() {
+	public Set<BookPublisher> getPublishers() {
 		return publishers;
 	}
 

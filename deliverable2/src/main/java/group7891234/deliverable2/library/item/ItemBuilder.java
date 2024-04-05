@@ -1,14 +1,15 @@
 package group7891234.deliverable2.library.item;
 
+import group7891234.deliverable2.library.BookPublisher;
 import group7891234.deliverable2.library.LibraryDataBase;
-import group7891234.deliverable2.library.Publisher;
+
 
 public class ItemBuilder implements LibraryBuilder{
 	private ItemType type;
 	private double price;
 	private String id;
 	private String name;
-	private Publisher publisher;
+	private BookPublisher publisher;
 	private String content;
 	@Override
 	public LibraryBuilder buildType(ItemType type) {
@@ -30,8 +31,7 @@ public class ItemBuilder implements LibraryBuilder{
 		return this;
 	}
 
-	@Override
-	public LibraryBuilder  buildPublisher(Publisher publisher) {
+	public LibraryBuilder  buildPublisher(BookPublisher publisher) {
 		this.publisher = publisher;
 		return this;
 	}

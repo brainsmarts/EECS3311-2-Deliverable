@@ -1,6 +1,7 @@
 package group7891234.deliverable2.library.item;
 
-import group7891234.deliverable2.library.Publisher;
+import group7891234.deliverable2.library.BookPublisher;
+//import group7891234.deliverable2.library.Publisher;
 
 public abstract class Item {
 
@@ -10,10 +11,10 @@ public abstract class Item {
 	private String id;
 	private String name;
 	private boolean enabled;
-	private Publisher publisher;
+	private BookPublisher publisher;
 	private String content;
 	
-	protected Item(ItemType type, String id, String name, Publisher publisher, String content) {
+	protected Item(ItemType type, String id, String name, BookPublisher publisher, String content) {
 		this.type = type;
 		this.id = id;
 		this.name = name;
@@ -55,7 +56,7 @@ public abstract class Item {
 		return enabled;
 	}
 
-	public Publisher getPublisher() {
+	public BookPublisher getPublisher() {
 		return publisher;
 	}
 

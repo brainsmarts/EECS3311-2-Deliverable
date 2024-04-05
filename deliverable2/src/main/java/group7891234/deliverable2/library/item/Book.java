@@ -2,14 +2,14 @@ package group7891234.deliverable2.library.item;
 
 import java.time.LocalDate;
 
-import group7891234.deliverable2.library.Publisher;
+import group7891234.deliverable2.library.BookPublisher;
 import group7891234.deliverable2.users.User;
 
 public class Book extends Item{
 	LocalDate dueDate;
 	User borrowedBy;
 
-	protected Book(ItemType type,  String id, String name, Publisher publisher, String content) {
+	protected Book(ItemType type,  String id, String name, BookPublisher publisher, String content) {
 		super(type, id, name, publisher, content);
 		// TODO Auto-generated constructor stub
 	}

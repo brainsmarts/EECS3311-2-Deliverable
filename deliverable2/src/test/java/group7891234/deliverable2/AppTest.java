@@ -8,7 +8,7 @@ import java.util.Set;
 import org.junit.Test;
 
 import group7891234.deliverable2.library.LibraryDataBase;
-import group7891234.deliverable2.library.Publisher;
+import group7891234.deliverable2.library.BookPublisher;
 import group7891234.deliverable2.library.item.Item;
 import group7891234.deliverable2.library.item.ItemBuilder;
 import group7891234.deliverable2.library.item.ItemType;

@@ -1,7 +1,7 @@
 package group7891234.deliverable2.request;
 
 import group7891234.deliverable2.library.LibraryDataBase;
-import group7891234.deliverable2.library.Publisher;
+import group7891234.deliverable2.library.BookPublisher;
 import group7891234.deliverable2.library.item.Item;
 import group7891234.deliverable2.library.item.ItemBuilder;
 import group7891234.deliverable2.library.item.ItemType;
@@ -58,11 +58,11 @@ public class RequestDataBase {
 		LibraryDataBase database = LibraryDataBase.getInstance();
 		Item item;
 		try {
-			Publisher publisher;
+			BookPublisher publisher;
 			try {
 				publisher = database.getPublisher(request.getPublisher());
 			}catch(Exception e) {
-				publisher = new Publisher(request.getPublisher(),new HashSet<>());
+				publisher = new BookPublisher(request.getPublisher(),new HashSet<>());
 			}
 			item = new ItemBuilder()
 					.buildType(request.getItemType())

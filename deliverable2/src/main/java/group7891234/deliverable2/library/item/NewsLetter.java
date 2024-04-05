@@ -1,10 +1,10 @@
 package group7891234.deliverable2.library.item;
 
-import group7891234.deliverable2.library.Publisher;
+import group7891234.deliverable2.library.BookPublisher;
 
 public class NewsLetter extends Item{
 
-	protected NewsLetter(ItemType type, String id, String name, Publisher publisher, String content) {
+	protected NewsLetter(ItemType type, String id, String name, BookPublisher publisher, String content) {
 		super(type, id, name, publisher, content);
 		// TODO Auto-generated constructor stub
 	}
