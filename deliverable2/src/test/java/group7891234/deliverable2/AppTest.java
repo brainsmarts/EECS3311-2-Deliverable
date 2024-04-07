@@ -35,10 +35,10 @@ public class AppTest
 		RequestDataBase rdatabase = RequestDataBase.getinstance();
 		User test = database.getUser("TaylorSwift");
 		test.borrow("cheese#7");
-		/*
-		for(Item item : ldatabase.getItems()) {
+		
+		/*for(Item item : ldatabase.getItems()) {
 			System.out.println(item.getId());
-		}
+		}*/
 		
 		/*
 		for(Publisher publisher: ldatabase.getPublishers()) {

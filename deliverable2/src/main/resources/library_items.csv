@@ -1,70 +1,70 @@
 type,id,name,price,enabled,publisher,content
-TEXTBOOK,werewolf30#3,The Werewolf Handbook,29.99,true,Moonlit Publications,Discover the lore legends and behavior of werewolves in different cultures.
-TEXTBOOK,mystery#1,Mystery Novel 1,0.0,true,Mystery Publishing,Explore the secrets hidden within the pages of this thrilling mystery novel.
-TEXTBOOK,mystery#2,Mystery Novel 2,0.0,true,Mystery Publishing,Unravel the twists and turns of this suspenseful mystery story.
-ONLINEBOOK,sci-fiON,Sci-Fi Thriller 8,0.0,false,Sci-Fi Publications,Embark on a thrilling space odyssey filled with danger and discovery.
-NEWSLETTER,chchron,Cheddar Chronicles,0.0,false,CheeseMagazine Co.,
-TEXTBOOK,java10#1,Java Programming Basics,29.99,true,Java Books Inc.,An introductory textbook covering the basics of Java programming.
-TEXTBOOK,cappuccino30#3,The Cappuccino Chronicles: History and Culture,29.99,true,BeanSociety Publications,Explore the rich history and cultural significance of cappuccino around the world.
-TEXTBOOK,rateconomy#6,Economics For Critters 6th edition,0.0,true,TheRatCompany,so u know how like but ALOT more cheese unlike last year just a bit of gold and we become the cheese demons
-BOOK,chseadv,The Adventure of Swiss and Holes,2.99,true,TheRatCompany,"Once upon a time, the great cheese man came to us and brought joy to our world with his cheesy delights. It was a time of merriment and celebration as we indulged in his creations. Little did we know that behind the scenes, a thrilling adventure was about to unfold. Join Swiss and Holes as they embark on a journey of discovery, friendship, and cheese. Will they uncover the secrets of the cheese man's past? Find out in this exciting tale of courage and cheddar."
-NEWSLETTER,bbc,BBC,0.0,false,BBC,https://www.bbc.com/
-BOOK,bubblescience,Coke Chemistry: The Science Behind the Bubbles,0.0,true,FizzFactor Publishing,"Unlock the mysteries of carbonation with Coke Chemistry! Explore the science behind the bubbles in Coca-Cola and other fizzy beverages. From the physics of carbon dioxide to the chemistry of flavor extraction, this book delves into the fascinating science that makes Coke so effervescent. With hands-on experiments, fun facts, and trivia quizzes, Coke Chemistry is a must-read for soda enthusiasts and science buffs alike."
-TEXTBOOK,la30#3,Linear Algebra Fundamentals,49.99,true,Mathematics Publishing,An essential textbook on linear algebra and its applications.
-TEXTBOOK,teapot40#4,Teapot Tales: An Anthology of Tea Stories,34.99,true,Tea Time Books,An anthology of stories poems and folklore inspired by the humble teapot.
-BOOK,cokeculture,The Coke Culture Code: Unraveling the Secrets of Brand Loyalty,14.99,true,Pop Culture Press,"What makes Coca-Cola more than just a beverage? In The Coke Culture Code, dive deep into the world of brand loyalty and cultural phenomena. Explore the history, marketing strategies, and global impact of Coca-Cola, and learn how the brand has become synonymous with happiness, nostalgia, and Americana. With insights from marketing experts, cultural analysts, and Coke enthusiasts, this book offers a unique perspective on the power of branding and storytelling."
-TEXTBOOK,cheese#4,The Great Cheese Man 4th edition,0.0,true,TheRatCompany,chaase chaase chaaase chaase hadhashkfhasdkjfkjasdfadjsfahdfhakdhfjkddda
-ONLINEBOOK,lotion231ON,How to Love Lotion,0.0,false,llotion,SO LOTION AMIRAITE
-BOOK,chsdsadan,Cheening On The Meow,0.0,false,RatMan,hehehehhehehehe
-ONLINEBOOK,fantasy#4,Legends of Magic: Spells and Sorcery,0.0,true,Mystical Publishing,Enchanted Realms: A Quest for Legendary Artifacts
-TEXTBOOK,espresso10#1,Espresso Basics: From Bean to Cup,19.99,true,Coffee Connoisseur Books,A beginner's guide to understanding and brewing espresso coffee.
-TEXTBOOK,dragon50#5,Dragonology: An Introduction to Dragon Lore,39.99,true,FireBreath Press,An in-depth study of dragons including their biology behavior and mythology.
 NEWSLETTER,chchron,Cheddar Chronicles,0.0,false,Unknown Publisher,
-NEWSLETTER,cnn,CNN,0.0,true,CNN,https://www.cnn.com/
-TEXTBOOK,db50#5,Database Management Systems: Principles and Practice,69.99,true,Database Solutions Ltd.,A practical guide to designing and managing database systems.
-BOOK,colabuzz,The Cola Chronicles: A History of Coca-Cola,0.0,true,Soda Saga Books,"Dive into the fascinating history of Coca-Cola, from its humble beginnings as a medicinal tonic to its rise as one of the world's most iconic brands. Discover the stories behind the secret formula, the legendary advertising campaigns, and the cultural impact of Coke on society. With exclusive interviews, rare photographs, and behind-the-scenes anecdotes, this book offers a comprehensive look at the enduring legacy of the beloved fizzy drink."
-TEXTBOOK,cheese#2,The Great Cheese Man 2nd edition,0.0,true,TheRatCompany,cheese cheese cheese cheese hadhashkfhasdkjfkjasdfadjsfahdfhakdhfjka
-TEXTBOOK,lotion231#1,How to Love Lotion,0.0,true,llotion,SO LOTION AMIRAITE
-ONLINEBOOK,cbinc,Critter Books Interactive,0.0,false,Unknown Publisher,asdfadf
-BOOK,mozzmagic,The Magic of Mozzarella,4.99,true,Fromage Fantasy Books,"In the magical world of Fromage, where cheeses come to life and wizards wield cheese wands, there lived a young cheese apprentice named Gouda. Gifted with the power of mozzarella magic, Gouda embarks on a quest to save his cheese kingdom from the clutches of the evil cheese sorcerer, Brie-zar. Along the way, he must master the ancient art of cheese alchemy, unlock the secrets of the cheese runes, and confront his own fears and doubts. Will Gouda succeed in his quest and restore peace to Fromage? Join him on this epic journey of cheese and sorcery."
-TEXTBOOK,ai40#4,Artificial Intelligence: Concepts and Techniques,59.99,true,FutureTech Education,A comprehensive overview of artificial intelligence concepts and techniques.
+TEXTBOOK,la30#3,Linear Algebra Fundamentals,49.99,true,Mathematics Publishing,An essential textbook on linear algebra and its applications.
+ONLINEBOOK,lotion231ON,How to Love Lotion,0.0,false,llotion,SO LOTION AMIRAITE
+TEXTBOOK,cheese#7,Cheening On The Meow,0.0,false,RatMan,hehehehhehehehe
 TEXTBOOK,vampire20#2,Vampire Lore and Legends,24.99,true,Dark Arts Press,Explore the history and mythology of vampires from around the world.
-TEXTBOOK,sci-fi#6,Sci-Fi Thriller 6,0.0,true,Sci-Fi Publications,Explore the wonders of the universe in this mind-bending science fiction thriller.
-TEXTBOOK,java10#2,Java Programming Basics,29.99,true,Java Books Inc.,Expanded and updated edition of the introductory textbook covering the basics of Java programming including new examples and exercises.
-TEXTBOOK,cheese#7,Cheening On The Meow,0.0,false,RatMan,hehehehhehehehe
-ONLINEBOOK,fantasyON,Fantasy Adventure 4,0.0,false,Fantasy Press,Discover magic dragons and heroes in this enchanting fantasy tale.
-TEXTBOOK,rateconomy#5,Economics For Critters 5th edition,0.0,false,TheRatCompany,so u know how like cause like its alot of alot of cheese that we can trade for gold
-ONLINEBOOK,history#1,Chronicles of Time: A Historical Journey,0.0,true,TimeTravel Books,Time Traveler's Handbook: Unraveling the Mysteries of the Past
-TEXTBOOK,sci-fi#7,Sci-Fi Thriller 7,0.0,true,Sci-Fi Publications,Encounter alien worlds and futuristic technology in this gripping sci-fi adventure.
-TEXTBOOK,fantasy#3,Fantasy Adventure 3,0.0,true,Fantasy Press,Embark on an epic journey through fantastical realms in this thrilling fantasy adventure.
-TEXTBOOK,cheese#7,Cheening On The Meow,0.0,false,RatMan,hehehehhehehehe
-BOOK,cokeart,Coke Artistry: The Creative Side of Coca-Cola,0.0,true,Pop Art Publications,"Discover the creative side of Coca-Cola in Coke Artistry! From iconic logos to pop art masterpieces, explore the artistic influence of Coke on popular culture. With stunning illustrations, photography, and interviews with renowned artists, this book celebrates the role of Coca-Cola as a muse and inspiration in the world of art and design. Whether you're a fan of Coke or contemporary art, Coke Artistry is sure to delight and inspire."
-BOOK,cokelegacy,Coke Legacy: Tales from the Coca-Cola Archives,17.99,true,Classic Cola Publishing,"Journey through the archives of Coca-Cola and uncover untold stories, forgotten campaigns, and rare memorabilia in Coke Legacy. From vintage advertisements to historic bottling plants, this book offers a visual feast for Coke collectors and nostalgia seekers. With contributions from Coca-Cola historians and collectors, Coke Legacy is a tribute to the enduring legacy of the world's favorite soda."
-TEXTBOOK,fantasy#5,Fantasy Adventure 5,0.0,true,Fantasy Press,Join forces with mythical creatures and brave warriors in this epic fantasy saga.
-TEXTBOOK,mug50#5,Mug Mania: A Celebration of Ceramic Cups,39.99,true,Cup Collector Press,A visual journey through the world of ceramic mugs featuring unique designs and styles.
-TEXTBOOK,la30#4,Linear Algebra Fundamentals,49.99,true,Mathematics Publishing,Revised and expanded edition of the essential textbook on linear algebra and its applications with additional exercises and applications.
-ONLINEBOOK,mysterON,Mystery Novel 2,0.0,false,Mystery Publishing,Unravel the twists and turns of this suspenseful mystery story.
-TEXTBOOK,cat#3,The Feline Chronicles: A History of Cats 3,0.0,true,TheCatCompany,Delve deeper into the fascinating history of cats exploring their impact on art culture and society throughout the ages.
-TEXTBOOK,lotion231#2,How to Love Lotion,0.0,true,llotion,SO LOTION AMIRAITE
+BOOK,chedreams,Cheese Dreams: A Bedtime Story,3.99,true,Dairy Dreamland Press,"In the land of Dairy Dreamland, where the moon is made of cheese and the stars are slices of Swiss, there lived a young mouse named Cheddar. Every night, as he drifted off to sleep, Cheddar would dream of endless cheese feasts and grand cheese adventures. But one night, his dreams took an unexpected turn. Join Cheddar as he journeys through his dreamscape, encountering cheese dragons, cheese castles, and mysterious cheese caves. Will he uncover the secret to the ultimate cheese dream? Find out in this enchanting bedtime story."
+BOOK,cokeculture,The Coke Culture Code: Unraveling the Secrets of Brand Loyalty,14.99,true,Pop Culture Press,"What makes Coca-Cola more than just a beverage? In The Coke Culture Code, dive deep into the world of brand loyalty and cultural phenomena. Explore the history, marketing strategies, and global impact of Coca-Cola, and learn how the brand has become synonymous with happiness, nostalgia, and Americana. With insights from marketing experts, cultural analysts, and Coke enthusiasts, this book offers a unique perspective on the power of branding and storytelling."
 TEXTBOOK,zombie10#2,Zombie Survival Guide,19.99,true,Apocalypse Publishing,Second edition of the zombie survival guide updated with new strategies and tactics for surviving zombie outbreaks.
+TEXTBOOK,cappuccino30#3,The Cappuccino Chronicles: History and Culture,29.99,true,BeanSociety Publications,Explore the rich history and cultural significance of cappuccino around the world.
+TEXTBOOK,cheese#2,The Great Cheese Man 2nd edition,0.0,true,TheRatCompany,cheese cheese cheese cheese hadhashkfhasdkjfkjasdfadjsfahdfhakdhfjka
+TEXTBOOK,dragon50#5,Dragonology: An Introduction to Dragon Lore,39.99,true,FireBreath Press,An in-depth study of dragons including their biology behavior and mythology.
+NEWSLETTER,cnn,CNN,0.0,true,CNN,https://www.cnn.com/
+NEWSLETTER,The Cheese Times,tcteee,0.0,false,Unknown Publisher,asdasd
+ONLINEBOOK,sci-fiON,Sci-Fi Thriller 8,0.0,false,Sci-Fi Publications,Embark on a thrilling space odyssey filled with danger and discovery.
+TEXTBOOK,sci-fi#6,Sci-Fi Thriller 6,0.0,true,Sci-Fi Publications,Explore the wonders of the universe in this mind-bending science fiction thriller.
+TEXTBOOK,lotion231#2,How to Love Lotion,0.0,true,llotion,SO LOTION AMIRAITE
+TEXTBOOK,sci-fi#8,Sci-Fi Thriller 8,0.0,true,Sci-Fi Publications,Embark on a thrilling space odyssey filled with danger and discovery.
+BOOK,chseadv,The Adventure of Swiss and Holes,2.99,true,TheRatCompany,"Once upon a time, the great cheese man came to us and brought joy to our world with his cheesy delights. It was a time of merriment and celebration as we indulged in his creations. Little did we know that behind the scenes, a thrilling adventure was about to unfold. Join Swiss and Holes as they embark on a journey of discovery, friendship, and cheese. Will they uncover the secrets of the cheese man's past? Find out in this exciting tale of courage and cheddar."
+TEXTBOOK,java10#2,Java Programming Basics,29.99,true,Java Books Inc.,Expanded and updated edition of the introductory textbook covering the basics of Java programming including new examples and exercises.
+TEXTBOOK,cat#1,The Feline Chronicles: A History of Cats1,0.0,true,TheCatCompany,Explore the fascinating history of catsfrom ancient civilizations to modern-day companionship. Learn about the cultural significanceevolutionand unique behaviors of these beloved creatures in The Feline Chronicles.
+TEXTBOOK,mug50#5,Mug Mania: A Celebration of Ceramic Cups,39.99,true,Cup Collector Press,A visual journey through the world of ceramic mugs featuring unique designs and styles.
+ONLINEBOOK,sci-fi#3,Galactic Adventures: Exploring the Universe,0.0,true,Starlight Press,Starship Voyager: Tales of Interstellar Exploration and Discovery
+NEWSLETTER,chchron,Cheddar Chronicles,0.0,false,CheeseMagazine Co.,
+BOOK,colabuzz,The Cola Chronicles: A History of Coca-Cola,0.0,true,Soda Saga Books,"Dive into the fascinating history of Coca-Cola, from its humble beginnings as a medicinal tonic to its rise as one of the world's most iconic brands. Discover the stories behind the secret formula, the legendary advertising campaigns, and the cultural impact of Coke on society. With exclusive interviews, rare photographs, and behind-the-scenes anecdotes, this book offers a comprehensive look at the enduring legacy of the beloved fizzy drink."
+TEXTBOOK,fantasy#4,Fantasy Adventure 4,0.0,true,Fantasy Press,Discover magic dragons and heroes in this enchanting fantasy tale.
+TEXTBOOK,mystery#2,Mystery Novel 2,0.0,true,Mystery Publishing,Unravel the twists and turns of this suspenseful mystery story.
+TEXTBOOK,werewolf30#3,The Werewolf Handbook,29.99,true,Moonlit Publications,Discover the lore legends and behavior of werewolves in different cultures.
+TEXTBOOK,dsa20#2,Data Structures and Algorithms Essentials,39.99,true,Algorithmic Press,A comprehensive guide to fundamental data structures and algorithms.
+TEXTBOOK,db50#5,Database Management Systems: Principles and Practice,69.99,true,Database Solutions Ltd.,A practical guide to designing and managing database systems.
+TEXTBOOK,mystery#1,Mystery Novel 1,0.0,true,Mystery Publishing,Explore the secrets hidden within the pages of this thrilling mystery novel.
+TEXTBOOK,fantasy#3,Fantasy Adventure 3,0.0,true,Fantasy Press,Embark on an epic journey through fantastical realms in this thrilling fantasy adventure.
+ONLINEBOOK,history#1,Chronicles of Time: A Historical Journey,0.0,true,TimeTravel Books,Time Traveler's Handbook: Unraveling the Mysteries of the Past
+TEXTBOOK,espresso10#1,Espresso Basics: From Bean to Cup,19.99,true,Coffee Connoisseur Books,A beginner's guide to understanding and brewing espresso coffee.
+TEXTBOOK,java10#1,Java Programming Basics,29.99,true,Java Books Inc.,An introductory textbook covering the basics of Java programming.
+TEXTBOOK,teapot40#4,Teapot Tales: An Anthology of Tea Stories,34.99,true,Tea Time Books,An anthology of stories poems and folklore inspired by the humble teapot.
+BOOK,mozzmagic,The Magic of Mozzarella,4.99,true,Fromage Fantasy Books,"In the magical world of Fromage, where cheeses come to life and wizards wield cheese wands, there lived a young cheese apprentice named Gouda. Gifted with the power of mozzarella magic, Gouda embarks on a quest to save his cheese kingdom from the clutches of the evil cheese sorcerer, Brie-zar. Along the way, he must master the ancient art of cheese alchemy, unlock the secrets of the cheese runes, and confront his own fears and doubts. Will Gouda succeed in his quest and restore peace to Fromage? Join him on this epic journey of cheese and sorcery."
+BOOK,cokelegacy,Coke Legacy: Tales from the Coca-Cola Archives,17.99,true,Classic Cola Publishing,"Journey through the archives of Coca-Cola and uncover untold stories, forgotten campaigns, and rare memorabilia in Coke Legacy. From vintage advertisements to historic bottling plants, this book offers a visual feast for Coke collectors and nostalgia seekers. With contributions from Coca-Cola historians and collectors, Coke Legacy is a tribute to the enduring legacy of the world's favorite soda."
+TEXTBOOK,cheese#6,The Great Cheese Man 4th edition,0.0,true,TheRatCompany,chaase chaase chaaase chaase hadhashkfhasdkjfkjasdfadjsfahdfhakdhfjkddda
+TEXTBOOK,dsa20#3,Data Structures and Algorithms Essentials,39.99,true,Algorithmic Press,Advanced edition of the comprehensive guide to fundamental data structures and algorithms featuring more in-depth discussions and advanced topics.
+ONLINEBOOK,cbinc,Critter Books Interactive,0.0,false,Unknown Publisher,asdfadf
+TEXTBOOK,ai40#4,Artificial Intelligence: Concepts and Techniques,59.99,true,FutureTech Education,A comprehensive overview of artificial intelligence concepts and techniques.
+ONLINEBOOK,fantasy#4,Legends of Magic: Spells and Sorcery,0.0,true,Mystical Publishing,Enchanted Realms: A Quest for Legendary Artifacts
+TEXTBOOK,sci-fi#7,Sci-Fi Thriller 7,0.0,true,Sci-Fi Publications,Encounter alien worlds and futuristic technology in this gripping sci-fi adventure.
+TEXTBOOK,cheese#4,The Great Cheese Man 4th edition,0.0,true,TheRatCompany,chaase chaase chaaase chaase hadhashkfhasdkjfkjasdfadjsfahdfhakdhfjkddda
+BOOK,cokeart,Coke Artistry: The Creative Side of Coca-Cola,0.0,true,Pop Art Publications,"Discover the creative side of Coca-Cola in Coke Artistry! From iconic logos to pop art masterpieces, explore the artistic influence of Coke on popular culture. With stunning illustrations, photography, and interviews with renowned artists, this book celebrates the role of Coca-Cola as a muse and inspiration in the world of art and design. Whether you're a fan of Coke or contemporary art, Coke Artistry is sure to delight and inspire."
+TEXTBOOK,fantasy#5,Fantasy Adventure 5,0.0,true,Fantasy Press,Join forces with mythical creatures and brave warriors in this epic fantasy saga.
+ONLINEBOOK,briebook,The Brie Bible: A Guide to Cheese Worship,0.0,false,CheeseWorship Online,
+TEXTBOOK,latte20#2,Latte Art Masterclass,24.99,true,Barista Academy Publishing,Learn the techniques and secrets behind creating stunning latte art designs.
+BOOK,bubblescience,Coke Chemistry: The Science Behind the Bubbles,0.0,true,FizzFactor Publishing,"Unlock the mysteries of carbonation with Coke Chemistry! Explore the science behind the bubbles in Coca-Cola and other fizzy beverages. From the physics of carbon dioxide to the chemistry of flavor extraction, this book delves into the fascinating science that makes Coke so effervescent. With hands-on experiments, fun facts, and trivia quizzes, Coke Chemistry is a must-read for soda enthusiasts and science buffs alike."
+TEXTBOOK,cheese#7,Cheening On The Meow,0.0,false,RatMan,hehehehhehehehe
+NEWSLETTER,bbc,BBC,0.0,false,BBC,https://www.bbc.com/
+ONLINEBOOK,cbinc,Critter Books Interactive,0.0,false,CrittersINC,
+NEWSLETTER,reut,Reuters,25.0,false,Reuters,https://www.reuters.com/
+ONLINEBOOK,Fromage Fantasy: A Tale of Curds and Whey,ffatcw,0.0,false,Unknown Publisher,asdasd
+ONLINEBOOK,biology#5,The Living World: Understanding Life Forms,0.0,true,Nature's Wonder Books,Biodiversity: Exploring Earth's Rich Tapestry of Life
+ONLINEBOOK,mysterON,Mystery Novel 2,0.0,false,Mystery Publishing,Unravel the twists and turns of this suspenseful mystery story.
+TEXTBOOK,rateconomy#5,Economics For Critters 5th edition,0.0,false,TheRatCompany,so u know how like cause like its alot of alot of cheese that we can trade for gold
 BOOK,chsdsadan,Cheening On The Meow,0.0,false,RatMan,hehehehhehehehe
 NEWSLETTER,times,NYTimes,0.0,true,NYTimes,https://www.nytimes.com/ca/
-TEXTBOOK,latte20#2,Latte Art Masterclass,24.99,true,Barista Academy Publishing,Learn the techniques and secrets behind creating stunning latte art designs.
-TEXTBOOK,sci-fi#8,Sci-Fi Thriller 8,0.0,true,Sci-Fi Publications,Embark on a thrilling space odyssey filled with danger and discovery.
-ONLINEBOOK,cbinc,Critter Books Interactive,0.0,false,CrittersINC,
-ONLINEBOOK,sci-fi#3,Galactic Adventures: Exploring the Universe,0.0,true,Starlight Press,Starship Voyager: Tales of Interstellar Exploration and Discovery
-NEWSLETTER,wash,WashingtonPost,0.0,true,Washington Post,https://www.washingtonpost.com/
-TEXTBOOK,cat#2,The Feline Chronicles: A History of Cats 2,0.0,true,TheCatCompany,Discover the special bond between cats and humans in Purrfect Partnerships. Explore the science psychology and heartwarming stories behind the relationships we share with our feline friends.
+TEXTBOOK,lotion231#1,How to Love Lotion,0.0,true,llotion,SO LOTION AMIRAITE
+TEXTBOOK,rateconomy#6,Economics For Critters 6th edition,0.0,true,TheRatCompany,so u know how like but ALOT more cheese unlike last year just a bit of gold and we become the cheese demons
 TEXTBOOK,cthulhu40#4,Call of Cthulhu: Mythos and Madness,34.99,true,Eldritch Books,Delve into the cosmic horror of the Cthulhu Mythos and its influence on literature and pop culture.
-ONLINEBOOK,biology#5,The Living World: Understanding Life Forms,0.0,true,Nature's Wonder Books,Biodiversity: Exploring Earth's Rich Tapestry of Life
-TEXTBOOK,dsa20#2,Data Structures and Algorithms Essentials,39.99,true,Algorithmic Press,A comprehensive guide to fundamental data structures and algorithms.
+BOOK,chsdsadan,Cheening On The Meow,0.0,false,RatMan,hehehehhehehehe
 TEXTBOOK,tggcm#2,Gouda's Guide to Cheese Making,0.0,false,CurdsAndWhey Press,
-BOOK,chedreams,Cheese Dreams: A Bedtime Story,3.99,true,Dairy Dreamland Press,"In the land of Dairy Dreamland, where the moon is made of cheese and the stars are slices of Swiss, there lived a young mouse named Cheddar. Every night, as he drifted off to sleep, Cheddar would dream of endless cheese feasts and grand cheese adventures. But one night, his dreams took an unexpected turn. Join Cheddar as he journeys through his dreamscape, encountering cheese dragons, cheese castles, and mysterious cheese caves. Will he uncover the secret to the ultimate cheese dream? Find out in this enchanting bedtime story."
-TEXTBOOK,fantasy#4,Fantasy Adventure 4,0.0,true,Fantasy Press,Discover magic dragons and heroes in this enchanting fantasy tale.
-ONLINEBOOK,briebook,The Brie Bible: A Guide to Cheese Worship,0.0,false,CheeseWorship Online,
-TEXTBOOK,cat#1,The Feline Chronicles: A History of Cats1,0.0,true,TheCatCompany,Explore the fascinating history of catsfrom ancient civilizations to modern-day companionship. Learn about the cultural significanceevolutionand unique behaviors of these beloved creatures in The Feline Chronicles.
-TEXTBOOK,cheese#6,The Great Cheese Man 4th edition,0.0,true,TheRatCompany,chaase chaase chaaase chaase hadhashkfhasdkjfkjasdfadjsfahdfhakdhfjkddda
-NEWSLETTER,reut,Reuters,25.0,false,Reuters,https://www.reuters.com/
-TEXTBOOK,dsa20#3,Data Structures and Algorithms Essentials,39.99,true,Algorithmic Press,Advanced edition of the comprehensive guide to fundamental data structures and algorithms featuring more in-depth discussions and advanced topics.
-ONLINEBOOK,Fromage Fantasy: A Tale of Curds and Whey,ffatcw,0.0,false,Unknown Publisher,asdasd
-NEWSLETTER,The Cheese Times,tcteee,0.0,false,Unknown Publisher,asdasd
+TEXTBOOK,cat#3,The Feline Chronicles: A History of Cats 3,0.0,true,TheCatCompany,Delve deeper into the fascinating history of cats exploring their impact on art culture and society throughout the ages.
+TEXTBOOK,cat#2,The Feline Chronicles: A History of Cats 2,0.0,true,TheCatCompany,Discover the special bond between cats and humans in Purrfect Partnerships. Explore the science psychology and heartwarming stories behind the relationships we share with our feline friends.
+TEXTBOOK,la30#4,Linear Algebra Fundamentals,49.99,true,Mathematics Publishing,Revised and expanded edition of the essential textbook on linear algebra and its applications with additional exercises and applications.
+NEWSLETTER,wash,WashingtonPost,0.0,true,Washington Post,https://www.washingtonpost.com/
+ONLINEBOOK,fantasyON,Fantasy Adventure 4,0.0,false,Fantasy Press,Discover magic dragons and heroes in this enchanting fantasy tale.
