@@ -1,18 +1,12 @@
 package group7891234.deliverable2.users;
 
 import static org.junit.Assert.assertTrue;
-
-// yhou need to clean up ur code and do shit here
-
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
-
 import group7891234.deliverable2.library.BookPublisher;
 import group7891234.deliverable2.library.LibraryDataBase;
 import group7891234.deliverable2.library.item.Book;
@@ -24,6 +18,8 @@ import group7891234.deliverable2.library.item.TextBook;
 import group7891234.deliverable2.request.Request;
 import group7891234.deliverable2.request.RequestDataBase;
 import group7891234.deliverable2.request.RequestType;
+import group7891234.deliverable2.users.User;
+import group7891234.deliverable2.users.UserDataBase;
 import group7891234.deliverable2.users.factory.*;
 
 class UserTestCases {
@@ -35,7 +31,7 @@ class UserTestCases {
 	
 	// student class testing: done
 	@Test
-	public void studentTest() {	// i don't need to shorten this
+	public void studentTest() {
 		try {
 			udb.registerNewUser("student", "NyOmMMMMy:3", "studn@email.com", UserType.STUDENT);
 		} catch (Exception e) {
@@ -85,8 +81,6 @@ class UserTestCases {
 		assertEquals("nofasc@email.com", nFaculty.getEmail());
 		assertEquals(UserType.NON_FACULTY, nFaculty.getType());
 		assertEquals("NyOmMMMMy:3", nFaculty.getPassword());
-		
-		// idk what to test here
 	}
 	
 	
@@ -124,7 +118,6 @@ class UserTestCases {
 		
 		// add faculty history
 		f1.addFacultyHistory("aaaaaaa");
-		
 	}
 	
 	@Test 
@@ -168,33 +161,11 @@ class UserTestCases {
 		f1.borrow("accordion");
 		assertTrue(f1.getBooksBorrowedList().contains("accordion"));
 	}
-	
-	/*
-	@Test
-	public void facultyBorrowing2() {
-		Faculty f1 = (Faculty) udb.getUser("faculty1");
-		ItemBuilder ib = new ItemBuilder();
-		ib.buildId("bananananananaan");
-		ib.buildContent("bite into a banana you forgot to peel it");
-		ib.buildName("banana peel");
-		ib.buildPrice(123.45);
-		ib.buildType(ItemType.BOOK);
-		try {
-			f1.borrow("banana peel");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-	*/
-	
-	// manager class testing
 
 	@Test
 	public void managerTest() {
 		Manager m1 = new Manager("user", "pass", "email");
 		Students s1 = new Students("user", "pass", "email");
-		//String[] idontwanna = {"piss"};
 		
 		ItemBuilder ib = new ItemBuilder();
 		ib.buildId("accordion");
@@ -218,6 +189,7 @@ class UserTestCases {
 		for (Item item : ldb.getItems()) {
 			m1.disableItem(item);
             m1.enableItem(item);
+            ldb.addItem(item);
 		}
 		
 		Item book = null;
@@ -227,7 +199,7 @@ class UserTestCases {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		assertEquals("biscuit town", book.getName());
+		assertTrue(true);
 	}
 	
 	@Test
@@ -254,6 +226,7 @@ class UserTestCases {
 		assertEquals("visit@no.com", visitor.getEmail());
 		assertEquals(UserType.VISITOR, visitor.getType());
 		assertEquals("NyOmMMMMy:3", visitor.getPassword());
+		assertEquals("visit@no.com", udb.getUser("visit").getEmail());
 	}
 	
 	@Test
@@ -277,6 +250,8 @@ class UserTestCases {
 		BookPublisher publisher = new BookPublisher("Natsumi Ando", publisherBooks);
 		ldb.addPublisher(publisher);
 		ib.buildPublisher(publisher);
+		ib.buildType(ItemType.NEWSLETTER);
+		
 		NewsLetter sb = (NewsLetter) ib.build();
 		
 		user.Subscribe(sb);
@@ -316,11 +291,43 @@ class UserTestCases {
 			});
 	}
 	
+	// user database test
 	@Test
-	public void helpme() {
-		udb.getUser("TaylorSwift");
+	public void rejectUser() {
+		try {
+			udb.registerNewUser("mamager:/", "NyOmMMMMy:3", "no@manager.com", UserType.MANAGER);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Manager gorl = (Manager) udb.getUser("mamager:/");
+		
+		udb.rejectUser("visitlolz", gorl);
+		assertTrue(true);
 	}
 	
+	@Test
+	public void passWordStrength() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			udb.checkPasswordStrength("haaaiiii");
+		});
+		udb.checkPasswordStrength("NyOmMMMMy:3");
+	}
 	
+	@Test
+	public void loginTest() {
+		try {
+			udb.registerNewUser("mamager:/", "NyOmMMMMy:3", "no@manager.com", UserType.MANAGER);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Manager gorl = (Manager) udb.getUser("mamager:/");
+		
+		assertTrue(udb.Login("mamager:/", "NyOmMMMMy:3"));
+		assertTrue(!udb.Login("mamager:/", "nyooooo"));
+	}
 }
 

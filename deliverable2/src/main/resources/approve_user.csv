@@ -1,12 +1,4 @@
 username,password,email,type
-witch,pass6,witch@example.com,FACULTY
-user,NyOmMMMMy:3,studn@email.com,STUDENT
-student,NyOmMMMMy:3,studn@email.com,STUDENT
-faculty1,NyOmMMMMy:3,facult@woowie.com,FACULTY
-user2,NyOmMMMMy:3,studn@email.com,STUDENT
-nonfaculty,NyOmMMMMy:3,nofasc@email.com,NON_FACULTY
-student2,NyOmMMMMy:3,studn@email.com,STUDENT
-faculty2,NyOmMMMMy:3,facult@woowie.com,FACULTY
 user,NyOmMMMMy:3,studn@email.com,STUDENT
 student,NyOmMMMMy:3,studn@email.com,STUDENT
 faculty1,NyOmMMMMy:3,facult@woowie.com,FACULTY

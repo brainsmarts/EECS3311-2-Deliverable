@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-
+\
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
@@ -50,7 +50,7 @@ public class RequestDataBase {
 				}
 			}
 		}
-			
+	
 		return instance;
 	}
 	
@@ -176,9 +176,7 @@ public class RequestDataBase {
 			System.out.println("To: " + email + "\n" + status);
 		}
 	}
-	private void addRequestToFile(Request request, User user) {
-		
-	}
+
 	
 	private void createRequestFromRecord(CsvReader reader) {
 		Request request = null;
@@ -195,4 +193,5 @@ public class RequestDataBase {
 			e.printStackTrace();
 		}
 	}
+	
 }

@@ -43,10 +43,4 @@ public class Request {
 		return (name.compareTo(this.id) == 0 && type == this.type);
 	}
 	
-	public void notifyPriority() {
-		//priority should be gotten from request database rather than the request itself,
-		//whenever the priority changes, send a notification to the user
-		//each request can technically have more than one user
-		//
-	}
 }
