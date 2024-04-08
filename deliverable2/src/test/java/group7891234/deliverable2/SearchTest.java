@@ -1,4 +1,4 @@
-package group7891234.deliverable2.library.search;
+package group7891234.deliverable2;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,6 +10,7 @@ import group7891234.deliverable2.library.item.ItemBuilder;
 import group7891234.deliverable2.library.item.ItemType;
 import group7891234.deliverable2.library.search.AuthorStrategy;
 import group7891234.deliverable2.library.search.Search;
+import group7891234.deliverable2.library.search.SearchStrategy;
 import group7891234.deliverable2.library.search.TitleStrategy;
 import group7891234.deliverable2.library.search.TypeStrategy;
 

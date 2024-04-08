@@ -1,11 +1,13 @@
-package group7891234.deliverable2.request;
+package group7891234.deliverable2;
 import static org.junit.Assert.*;
 import org.junit.*;
 
 import group7891234.deliverable2.library.LibraryDataBase;
 import group7891234.deliverable2.library.item.ItemType;
 import group7891234.deliverable2.library.item.TextBook;
+import group7891234.deliverable2.request.Request;
 import group7891234.deliverable2.request.RequestDataBase;
+import group7891234.deliverable2.request.RequestType;
 import group7891234.deliverable2.users.User;
 import group7891234.deliverable2.users.UserDataBase;
 

@@ -31,7 +31,7 @@ public class Request {
 	private String name;
 	private String publisher;
 	
-	Request(ItemType itemType, String id, String name, String publisher, RequestType type){
+	public Request(ItemType itemType, String id, String name, String publisher, RequestType type){
 		this.itemType = itemType;
 		this.name = name;
 		this.publisher = publisher;

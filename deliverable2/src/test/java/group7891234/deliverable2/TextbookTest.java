@@ -1,4 +1,4 @@
-package group7891234.deliverable2.library.TextBookEditions; 
+package group7891234.deliverable2; 
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.runner.Request;
 
 import group7891234.deliverable2.library.*;
+import group7891234.deliverable2.library.TextBookEditions.EmailNotification;
+import group7891234.deliverable2.library.TextBookEditions.TextBookEdition;
 import group7891234.deliverable2.library.item.Item;
 import group7891234.deliverable2.library.item.ItemBuilder;
 import group7891234.deliverable2.library.item.ItemType;

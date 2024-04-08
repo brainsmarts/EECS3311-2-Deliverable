@@ -1,4 +1,4 @@
-package group7891234.deliverable2.users;
+package group7891234.deliverable2;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
