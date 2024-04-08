@@ -35,7 +35,7 @@ public class TextbookTest {
 	@Test
 	public void EmailNotiftest1() {
 		UserDataBase database = UserDataBase.getInstance();
-		User test = database.getUser("TaylorSwift");
+		User test = database.getUser("user");
 	
 		EmailNotification EmailNotif = new EmailNotification(test);
 	
@@ -53,7 +53,7 @@ public class TextbookTest {
 	@Test
 	public void EmailNotiftest3() {
 		UserDataBase database = UserDataBase.getInstance();
-		User test3 = database.getUser("HomerTime");
+		User test3 = database.getUser("user");
 		
 		
 		EmailNotification EmailNotif2 = new EmailNotification(test3);
@@ -64,7 +64,7 @@ public class TextbookTest {
 	@Test
 	public void EmailNotiftest4() {
 		UserDataBase database = UserDataBase.getInstance();
-		User test4 = database.getUser("braindon");		
+		User test4 = database.getUser("mamager:/");		
 		EmailNotification EmailNotif = new EmailNotification(test4);
 		String msg = EmailNotif.toString();
 		assertEquals(msg , EmailNotif.toString());

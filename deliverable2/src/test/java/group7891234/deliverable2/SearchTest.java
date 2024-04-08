@@ -20,7 +20,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 
-class searchTest {
+class SearchTest {
 
 	//private LibraryDataBase ldb = LibraryDataBase.getInstance();
 	//private Item tb;

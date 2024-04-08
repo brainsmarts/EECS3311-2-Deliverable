@@ -96,7 +96,7 @@ public class RequestTest {
 		RequestDataBase rdb = RequestDataBase.getinstance();
 		Request r = new Request(ItemType.ONLINEBOOK, "Weakness#2", "Cry for help", "Olaf the snowman", RequestType.SELF_IMPROVEMENT );
 		UserDataBase database = UserDataBase.getInstance();
-		User test = database.getUser("HomerTime");
+		User test = database.getUser("user");
 		rdb.addRequest(ItemType.NEWSLETTER, "BBC", "CBB", "The united kingdom", RequestType.COURSE_TEACHING, test);
 		rdb.rejectRequest(r);
 	}

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Collections;
 import java.util.Set;
+import java.util.concurrent.Flow.Publisher;
 
 import org.junit.Test;
 
@@ -36,15 +37,15 @@ public class AppTest
 		User test = database.getUser("TaylorSwift");
 		test.borrow("cheese#7");
 		
-		/*for(Item item : ldatabase.getItems()) {
+		for(Item item : ldatabase.getItems()) {
 			System.out.println(item.getId());
-		}*/
+		}
 		
-		/*
-		for(Publisher publisher: ldatabase.getPublishers()) {
+		
+		for(BookPublisher publisher: ldatabase.getPublishers()) {
 			System.out.println(publisher.getName());
 		}
-		*/
+		
 	}
 	
 	
